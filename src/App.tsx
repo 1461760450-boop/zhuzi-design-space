@@ -1,25 +1,27 @@
 import { useEffect, useMemo, useState } from 'react'
 
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
+
 const projects = [
-  { category: '包装', title: '礼盒', image: '/assets/packaging/礼盒.jpg' },
-  { category: '包装', title: '乐叔的茶方案3', image: '/assets/packaging/乐叔的茶方案3.jpg' },
-  { category: '包装', title: '偻里奶茶杯 2', image: '/assets/packaging/偻里奶茶杯2.jpg' },
-  { category: 'logo', title: '7', image: '/assets/logo/7.jpg' },
-  { category: '详情页', title: '美妆', image: '/assets/details/美妆.jpg', href: '/assets/details-full/美妆.jpg' },
-  { category: '详情页', title: '美妆2', image: '/assets/details/美妆2.jpg', href: '/assets/details-full/美妆2.jpg' },
-  { category: '详情页', title: '美妆4', image: '/assets/details/美妆4.jpg', href: '/assets/details-full/美妆4.jpg' },
-  { category: '详情页', title: '美妆首页', image: '/assets/details/美妆首页.jpg', href: '/assets/details-full/美妆首页.jpg' },
-  { category: '详情页', title: '1.球类详情', image: '/assets/details/1.球类详情.jpg', href: '/assets/details-full/1.球类详情.jpg' },
-  { category: '详情页', title: '天猫首页', image: '/assets/details/天猫首页.jpg', href: '/assets/details-full/天猫首页.jpg' },
-  { category: '详情页', title: '鞋垫1', image: '/assets/details/鞋垫1.jpg', href: '/assets/details-full/鞋垫1.jpg' },
-  { category: '详情页', title: '鞋垫2', image: '/assets/details/鞋垫2.jpg', href: '/assets/details-full/鞋垫2.jpg' },
-  { category: '详情页', title: '鞋垫3', image: '/assets/details/鞋垫3.jpg', href: '/assets/details-full/鞋垫3.jpg' },
-  { category: '详情页', title: '鞋垫4', image: '/assets/details/鞋垫4.jpg', href: '/assets/details-full/鞋垫4.jpg' },
-  { category: '展会活动', title: '在云端在尖端-主KV-1(完稿)', image: '/assets/poster.jpg' },
-  { category: '展会活动', title: '在云端在尖端-签到区', image: '/assets/event.jpg' },
-  { category: '展会活动', title: '新年賀卡2022-亞興泰', image: '/assets/newyear.jpg' },
-  { category: '展会活动', title: '澳大利亚堪培拉留学移民', image: '/assets/canberra.jpg' },
-  { category: '画册', title: '汽车画册5', image: '/assets/brochure/汽车画册.jpg' },
+  { category: '包装', title: '礼盒', image: asset('assets/packaging/礼盒.jpg') },
+  { category: '包装', title: '乐叔的茶方案3', image: asset('assets/packaging/乐叔的茶方案3.jpg') },
+  { category: '包装', title: '偻里奶茶杯 2', image: asset('assets/packaging/偻里奶茶杯2.jpg') },
+  { category: 'logo', title: '7', image: asset('assets/logo/7.jpg') },
+  { category: '详情页', title: '美妆', image: asset('assets/details/美妆.jpg'), href: asset('assets/details-full/美妆.jpg') },
+  { category: '详情页', title: '美妆2', image: asset('assets/details/美妆2.jpg'), href: asset('assets/details-full/美妆2.jpg') },
+  { category: '详情页', title: '美妆4', image: asset('assets/details/美妆4.jpg'), href: asset('assets/details-full/美妆4.jpg') },
+  { category: '详情页', title: '美妆首页', image: asset('assets/details/美妆首页.jpg'), href: asset('assets/details-full/美妆首页.jpg') },
+  { category: '详情页', title: '1.球类详情', image: asset('assets/details/1.球类详情.jpg'), href: asset('assets/details-full/1.球类详情.jpg') },
+  { category: '详情页', title: '天猫首页', image: asset('assets/details/天猫首页.jpg'), href: asset('assets/details-full/天猫首页.jpg') },
+  { category: '详情页', title: '鞋垫1', image: asset('assets/details/鞋垫1.jpg'), href: asset('assets/details-full/鞋垫1.jpg') },
+  { category: '详情页', title: '鞋垫2', image: asset('assets/details/鞋垫2.jpg'), href: asset('assets/details-full/鞋垫2.jpg') },
+  { category: '详情页', title: '鞋垫3', image: asset('assets/details/鞋垫3.jpg'), href: asset('assets/details-full/鞋垫3.jpg') },
+  { category: '详情页', title: '鞋垫4', image: asset('assets/details/鞋垫4.jpg'), href: asset('assets/details-full/鞋垫4.jpg') },
+  { category: '展会活动', title: '在云端在尖端-主KV-1(完稿)', image: asset('assets/poster.jpg') },
+  { category: '展会活动', title: '在云端在尖端-签到区', image: asset('assets/event.jpg') },
+  { category: '展会活动', title: '新年賀卡2022-亞興泰', image: asset('assets/newyear.jpg') },
+  { category: '展会活动', title: '澳大利亚堪培拉留学移民', image: asset('assets/canberra.jpg') },
+  { category: '画册', title: '汽车画册5', image: asset('assets/brochure/汽车画册.jpg') },
 ]
 
 const pdfThumbs = import.meta.glob('./pdf-thumbs/**/*.jpg', { eager: true, query: '?url', import: 'default' }) as Record<string, string>
