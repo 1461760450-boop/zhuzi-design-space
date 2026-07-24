@@ -58,7 +58,7 @@
 /* Independent masonry columns — prevents left/right overlap */
 .metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;row-gap:0}
 .metric-column{min-width:0}
-.metric-column-right{padding-top:105px;border-left:1px solid var(--line)}
+.metric-column-right{padding-top:105px;border-left:0}
 .metric-grid article,.metric-grid article:nth-child(2),.metric-grid article:nth-child(3),.metric-grid article:nth-child(4){min-height:390px;margin:0;padding:0;border-top:0;border-bottom:1px solid #e9e7e2}
 .metric-grid article:before{display:none!important}
 .metric-grid .metric-one,.metric-grid .metric-two{border-top:3px solid var(--red)}
@@ -102,7 +102,7 @@
 .expertise-strip b{font-size:7px;color:var(--red);font-weight:500}
 .mission{grid-template-columns:repeat(4,1fr);align-items:start;min-height:1750px;position:relative}
 .profile-card{grid-column:1;margin:70px 0 70px 4vw;position:sticky;top:22px;align-self:start}
-.profile-art.profile-placeholder{height:390px;background:#d9d6cf;display:flex;align-items:center;justify-content:center}
+.profile-art.profile-placeholder{height:500px;background:#d9d6cf;display:flex;align-items:center;justify-content:center}
 .profile-art.profile-placeholder:before,.profile-art.profile-placeholder:after{display:none}
 .profile-art.profile-placeholder span{font-size:10px;letter-spacing:.18em;color:#aaa6a0}
 .profile-art.profile-placeholder i{font-size:8px;color:#aaa6a0}
