@@ -45,10 +45,6 @@
 .metric-grid article:nth-child(3) .metric-inner{transform:translate3d(calc(var(--metric-x) * 6px),calc(var(--metric-y) * -9px),0)}
 .metric-grid article:nth-child(4) .metric-inner{transform:translate3d(calc(var(--metric-x) * -9px),calc(var(--metric-y) * -7px),0)}
 .metric-grid:hover .metric-inner{transition-duration:.12s}
-.metric-grid{row-gap:64px}
-.metric-grid article:nth-child(3){margin-top:0;border-top:0}
-.metric-grid article:nth-child(4){border-top:0}
-.metric-grid article:nth-child(3):before,.metric-grid article:nth-child(4):before{display:none}
 
 @media(max-width:900px){
   .metric-grid article{min-height:300px;padding:0}.metric-inner{padding:22px 12px}
@@ -57,6 +53,24 @@
 
 @media(prefers-reduced-motion:reduce){
   .metric-inner{transform:none!important;transition:none!important}
+}
+
+/* Independent masonry columns — prevents left/right overlap */
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:start;row-gap:0}
+.metric-column{min-width:0}
+.metric-column-right{padding-top:105px;border-left:1px solid var(--line)}
+.metric-grid article,.metric-grid article:nth-child(2),.metric-grid article:nth-child(3),.metric-grid article:nth-child(4){min-height:390px;margin:0;padding:0;border-top:0;border-bottom:1px solid #e9e7e2}
+.metric-grid article:before{display:none!important}
+.metric-grid .metric-one,.metric-grid .metric-two{border-top:3px solid var(--red)}
+.metric-grid .metric-three,.metric-grid .metric-four{border-top:0}
+.metric-grid .metric-one .metric-inner{transform:translate3d(calc(var(--metric-x) * 7px),calc(var(--metric-y) * 8px),0)}
+.metric-grid .metric-two .metric-inner{transform:translate3d(calc(var(--metric-x) * -8px),calc(var(--metric-y) * 6px),0)}
+.metric-grid .metric-three .metric-inner{transform:translate3d(calc(var(--metric-x) * 5px),calc(var(--metric-y) * -7px),0)}
+.metric-grid .metric-four .metric-inner{transform:translate3d(calc(var(--metric-x) * -6px),calc(var(--metric-y) * -5px),0)}
+
+@media(max-width:900px){
+  .metric-grid{grid-template-columns:1fr}.metric-column-right{padding-top:0;border-left:0}
+  .metric-grid article{min-height:280px}.metric-grid .metric-two{border-top:3px solid var(--red)}
 }
 
 /* Hanza-inspired scroll choreography */

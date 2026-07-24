@@ -179,10 +179,14 @@ export default function App() {
             event.currentTarget.style.setProperty('--metric-x', '0')
             event.currentTarget.style.setProperty('--metric-y', '0')
           }}>
-            <article><div className="metric-inner"><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></div></article>
-            <article><div className="metric-inner"><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></div></article>
-            <article><div className="metric-inner"><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></div></article>
-            <article><div className="metric-inner"><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></div></article>
+            <div className="metric-column">
+              <article className="metric-one"><div className="metric-inner"><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></div></article>
+              <article className="metric-three"><div className="metric-inner"><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></div></article>
+            </div>
+            <div className="metric-column metric-column-right">
+              <article className="metric-two"><div className="metric-inner"><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></div></article>
+              <article className="metric-four"><div className="metric-inner"><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></div></article>
+            </div>
           </div>
           <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
         </div>
