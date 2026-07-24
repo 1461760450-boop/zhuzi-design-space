@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -25,10 +25,63 @@ const process = [
   ['05', 'Launch', '交付上线', '跟进制作与上线，并让设计在真实场景中持续生长。'],
 ]
 
+function MissionStatement() {
+  const ref = useRef<HTMLHeadingElement>(null)
+  const [active, setActive] = useState(0)
+  const phrases = ['你好，', '我是 ZHUZI。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const rect = ref.current?.getBoundingClientRect()
+      if (!rect) return
+      const progress = Math.max(0, Math.min(1, (window.innerHeight * .78 - rect.top) / (window.innerHeight * .58)))
+      setActive(Math.ceil(progress * phrases.length))
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { window.removeEventListener('scroll', onScroll); if (frame) cancelAnimationFrame(frame) }
+  }, [])
+  return <h2 className="mission-statement" ref={ref}>{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
+}
+
+function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
+  const ref = useRef<HTMLElement>(null)
+  const [display, setDisplay] = useState(0)
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      const start = performance.now()
+      const duration = 1100
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1)
+        setDisplay(Math.round(value * (1 - Math.pow(1 - progress, 3))))
+        if (progress < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+      observer.disconnect()
+    }, { threshold: .45 })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [value])
+  return <strong ref={ref}>{String(display).padStart(value < 10 ? 2 : 1, '0')}{suffix}</strong>
+}
+
 export default function App() {
   const [menu, setMenu] = useState(false)
   const [selected, setSelected] = useState<(typeof cases)[number] | null>(null)
   const [time, setTime] = useState('')
+
+  const floatMetrics = (event: PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width - .5) * 2
+    const y = ((event.clientY - rect.top) / rect.height - .5) * 2
+    event.currentTarget.style.setProperty('--metric-x', x.toFixed(3))
+    event.currentTarget.style.setProperty('--metric-y', y.toFixed(3))
+  }
 
   useEffect(() => {
     const tick = () => setTime(new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' }).format(new Date()))
@@ -42,7 +95,45 @@ export default function App() {
     return () => { document.body.style.overflow = '' }
   }, [menu, selected])
 
+  useEffect(() => {
+    const root = document.documentElement
+    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
+    animated.forEach((element, index) => {
+      element.classList.add('scroll-reveal')
+      ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
+    })
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' })
+    animated.forEach(element => observer.observe(element))
+
+    let frame = 0
+    const updateScroll = () => {
+      frame = 0
+      const y = window.scrollY
+      const heroProgress = Math.min(y / Math.max(window.innerHeight, 1), 1)
+      root.style.setProperty('--hero-scroll', heroProgress.toFixed(4))
+      root.style.setProperty('--page-progress', `${Math.min(y / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1) * 100}%`)
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateScroll)
+    }
+    updateScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
   return <div className="hanza-site" id="top">
+    <div className="scroll-progress" aria-hidden="true" />
     <header className="topbar">
       <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
       <a className="wordmark" href="#top"><i />ZHUZI’S SPACE</a>
@@ -71,21 +162,33 @@ export default function App() {
         <h1 className="hero-brand">ZHUZI’S<br />SPACE</h1>
       </section>
 
+      <div className="expertise-strip" aria-label="核心能力">
+        {['BRAND SYSTEM', 'PACKAGING', 'AIGC', 'B2B WEBSITE', 'GLOBAL EXPO', 'E-COMMERCE', 'MOTION', '3D VISUAL'].map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, '0')}</b>{item}</span>)}
+      </div>
+
       <section className="mission grid-bg" id="about">
         <div className="profile-card">
-          <div className="profile-art"><span>K</span><i>AI DESIGNER</i></div>
+          <div className="profile-art profile-placeholder"><span>PORTRAIT</span><i>COMING SOON</i></div>
           <a href="#contact">GET IN TOUCH <b>/ZHUZI</b><ArrowRight /></a>
           <div className="profile-meta"><strong>ZHUZI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
         </div>
         <div className="mission-copy">
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
-          <h2>你好，我是 ZHUZI。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
-          <div className="metric-grid">
-            <article><small>01 / EXPERIENCE</small><strong>09+</strong><p>年品牌、包装与视觉设计经验。</p></article>
-            <article><small>02 / PACKAGES</small><strong>50+</strong><p>完成并进入市场的量产包装。</p></article>
-            <article><small>03 / SERIES</small><strong>20+</strong><p>跨鞋垫、护具、宠物与消费品系列。</p></article>
-            <article><small>04 / BRANDS</small><strong>06</strong><p>持续服务的品牌视觉与商业系统。</p></article>
+          <MissionStatement />
+          <div className="metric-grid" onPointerMove={floatMetrics} onPointerLeave={event => {
+            event.currentTarget.style.setProperty('--metric-x', '0')
+            event.currentTarget.style.setProperty('--metric-y', '0')
+          }}>
+            <div className="metric-column">
+              <article className="metric-one"><div className="metric-inner"><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></div></article>
+              <article className="metric-three"><div className="metric-inner"><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></div></article>
+            </div>
+            <div className="metric-column metric-column-right">
+              <article className="metric-two"><div className="metric-inner"><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></div></article>
+              <article className="metric-four"><div className="metric-inner"><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></div></article>
+            </div>
           </div>
+          <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
         </div>
       </section>
 
