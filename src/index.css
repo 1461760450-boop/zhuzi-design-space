@@ -45,6 +45,10 @@
 .metric-grid article:nth-child(3) .metric-inner{transform:translate3d(calc(var(--metric-x) * 6px),calc(var(--metric-y) * -9px),0)}
 .metric-grid article:nth-child(4) .metric-inner{transform:translate3d(calc(var(--metric-x) * -9px),calc(var(--metric-y) * -7px),0)}
 .metric-grid:hover .metric-inner{transition-duration:.12s}
+.metric-grid{row-gap:64px}
+.metric-grid article:nth-child(3){margin-top:0;border-top:0}
+.metric-grid article:nth-child(4){border-top:0}
+.metric-grid article:nth-child(3):before,.metric-grid article:nth-child(4):before{display:none}
 
 @media(max-width:900px){
   .metric-grid article{min-height:300px;padding:0}.metric-inner{padding:22px 12px}
