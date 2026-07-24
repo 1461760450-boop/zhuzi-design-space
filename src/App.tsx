@@ -28,7 +28,7 @@ const process = [
 function MissionStatement() {
   const ref = useRef<HTMLHeadingElement>(null)
   const [active, setActive] = useState(0)
-  const phrases = ['你好，', '我是 Kiki。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
+  const phrases = ['你好，', '我是竹子。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
   useEffect(() => {
     let frame = 0
     const update = () => {
@@ -136,14 +136,14 @@ export default function App() {
     <div className="scroll-progress" aria-hidden="true" />
     <header className="topbar">
       <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
-      <a className="wordmark" href="#top"><i />KIKI’S SPACE</a>
+      <a className="wordmark" href="#top"><i />竹子®</a>
       <div className="clock"><strong>{time}</strong><span>LOCAL TIME / CN</span></div>
-      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/KIKI</b><ArrowRight /></a>
+      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/ZHUZI</b><ArrowRight /></a>
     </header>
 
     {menu && <div className="menu-panel">
       <button onClick={() => setMenu(false)}><X /> CLOSE</button>
-      {['关于 Kiki','作品案例','能力服务','创作流程','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#services','#process','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
+      {['角色介绍','作品案例','互动体验','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#experience','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
     </div>}
 
     <main>
@@ -151,15 +151,15 @@ export default function App() {
         <video className="intro-video" autoPlay muted loop playsInline preload="auto" poster={asset('assets/videos/hanza-flower-poster.png')}><source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" /></video>
         <div className="intro-shade" />
         <div className="intro-center">
-          <p>I HELP BRANDS TURN COMPLEX<br />IDEAS INTO CLEAR, LIVING VISUALS.</p>
-          <div><span>/01&nbsp; AI VISUAL DESIGN</span><span>/02&nbsp; BRAND & PACKAGING</span><span>/03&nbsp; GLOBAL CAMPAIGN</span></div>
+          <p>I SHAPE COMPLEX PRODUCTS<br />INTO CLEAR, LIVING VISUALS.</p>
+          <div><span>/01&nbsp; BRAND VISUAL SYSTEM</span><span>/02&nbsp; PACKAGING & COMMERCE</span><span>/03&nbsp; GLOBAL COMMUNICATION</span></div>
         </div>
         <div className="trust">
           <div className="avatar-stack"><span>K</span><span>AI</span><span>09</span><span>+</span></div>
           <div><strong>9 YEARS / 50+ LAUNCHES</strong><p>BRAND, PACKAGING & GLOBAL COMMUNICATION</p></div>
         </div>
-        <p className="hero-side-note">INDEPENDENT AI DESIGNER · GUANGZHOU</p>
-        <h1 className="hero-brand">KIKI’S<br />SPACE</h1>
+        <p className="hero-side-note">VISUAL DESIGNER · GUANGZHOU</p>
+        <h1 className="hero-brand">竹子®<br />ZHUZI</h1>
       </section>
 
       <div className="expertise-strip" aria-label="核心能力">
@@ -169,8 +169,8 @@ export default function App() {
       <section className="mission grid-bg" id="about">
         <div className="profile-card">
           <div className="profile-art profile-placeholder"><span>PORTRAIT</span><i>COMING SOON</i></div>
-          <a href="#contact">GET IN TOUCH <b>/KIKI</b><ArrowRight /></a>
-          <div className="profile-meta"><strong>KIKI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
+          <a href="#contact">GET IN TOUCH <b>/ZHUZI</b><ArrowRight /></a>
+          <div className="profile-meta"><strong>竹子 · 彭著娟 AMY</strong><p><span>PROFESSION</span>VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
         </div>
         <div className="mission-copy">
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
@@ -226,14 +226,31 @@ export default function App() {
         <div className="process-grid">{process.map(([no,en,cn,text]) => <article key={no}><strong>{no}</strong><small>{en}</small><h3>{cn}</h3><p>{text}</p></article>)}</div>
       </section>
 
+      <section className="interaction-lab" id="experience" onPointerMove={floatMetrics} onPointerLeave={event => {
+        event.currentTarget.style.setProperty('--metric-x', '0')
+        event.currentTarget.style.setProperty('--metric-y', '0')
+      }}>
+        <div className="interaction-head">
+          <small>05 &nbsp; INTERACTIVE EXPERIENCE</small>
+          <h2>MOVE.<br /><em>FEEL.</em><br />DISCOVER.</h2>
+          <p>移动鼠标，感受视觉系统在秩序与变化之间的呼吸。这里将用于承载后续的 AI 视觉实验、动态图形与交互作品。</p>
+        </div>
+        <div className="interaction-stage" aria-label="鼠标互动体验">
+          <div className="glass-orbit orbit-one"><span>BRAND</span></div>
+          <div className="glass-orbit orbit-two"><span>MOTION</span></div>
+          <div className="glass-orbit orbit-three"><span>AIGC</span></div>
+          <div className="interaction-core"><b>竹</b><small>MOVE YOUR CURSOR</small></div>
+        </div>
+      </section>
+
       <section className="contact" id="contact">
-        <small>05 &nbsp; CONTACT</small>
+        <small>06 &nbsp; CONTACT</small>
         <h2>Ready to make<br />something <em>alive?</em></h2>
         <div className="contact-row">
           <div><span>EMAIL</span><a href="mailto:1461760450@qq.com">1461760450@qq.com <ArrowUpRight /></a></div>
           <div><span>PHONE / WECHAT</span><a href="tel:+8615700715232">+86 157 0071 5232 <ArrowUpRight /></a></div>
         </div>
-        <footer><a href="#top">KIKI’S SPACE</a><span>AI DESIGNER / VISUAL STRATEGIST</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
+        <footer><a href="#top">竹子® ZHUZI</a><span>VISUAL DESIGNER / BRAND & COMMUNICATION</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
       </section>
     </main>
 

@@ -124,6 +124,22 @@
 .metric-grid article.in-view:before{transform:scaleX(1)}
 .metric-grid article>strong{font-variant-numeric:tabular-nums}
 .profile-placeholder:after{content:"";display:block!important;position:absolute!important;inset:-40%;width:auto!important;height:auto!important;border:0!important;border-radius:0!important;background:linear-gradient(110deg,transparent 38%,rgba(255,255,255,.3) 50%,transparent 62%)!important;backdrop-filter:none!important;transform:translateX(-55%);animation:placeholder-sheen 4s ease-in-out infinite}
+
+.interaction-lab{--metric-x:0;--metric-y:0;min-height:100vh;padding:110px 4vw;display:grid;grid-template-columns:1fr 1.55fr;gap:5vw;background:radial-gradient(circle at 68% 48%,rgba(255,174,36,.26),transparent 27%),linear-gradient(135deg,#ff6a22 0%,#ff9d2e 38%,#f8e0a3 100%);overflow:hidden;position:relative}
+.interaction-lab:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.18) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+.interaction-head{position:relative;z-index:2;display:flex;flex-direction:column}
+.interaction-head small{font-size:9px;letter-spacing:.12em}
+.interaction-head h2{font-size:clamp(76px,8.6vw,145px);line-height:.74;letter-spacing:-.08em;font-weight:500;margin:12vh 0 8vh}
+.interaction-head h2 em{font-family:Georgia,serif;font-weight:400;color:rgba(255,255,255,.76)}
+.interaction-head p{max-width:410px;font-size:12px;line-height:1.8;margin-top:auto}
+.interaction-stage{position:relative;z-index:2;min-height:720px;border:1px solid rgba(255,255,255,.45);border-radius:999px 999px 28px 28px;background:rgba(255,255,255,.12);box-shadow:inset 0 1px rgba(255,255,255,.6),0 35px 80px rgba(121,52,0,.16);backdrop-filter:blur(18px);overflow:hidden}
+.interaction-stage:before,.interaction-stage:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.55);border-radius:50%;inset:12% 8%}.interaction-stage:after{inset:24% 20%}
+.interaction-core{position:absolute;left:50%;top:50%;width:210px;height:210px;border-radius:50%;transform:translate(calc(-50% + var(--metric-x)*42px),calc(-50% + var(--metric-y)*42px));transition:transform .18s ease-out;background:rgba(255,255,255,.7);box-shadow:0 20px 70px rgba(133,49,0,.18);backdrop-filter:blur(25px);display:grid;place-items:center}
+.interaction-core b{font-size:86px;font-weight:500;letter-spacing:-.08em}.interaction-core small{position:absolute;bottom:32px;font-size:7px;letter-spacing:.16em}
+.glass-orbit{position:absolute;width:112px;height:112px;border-radius:50%;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.65);box-shadow:0 18px 45px rgba(111,42,0,.15);backdrop-filter:blur(15px);display:grid;place-items:center;font-size:8px;letter-spacing:.12em;transition:transform .22s ease-out}
+.orbit-one{left:13%;top:20%;transform:translate(calc(var(--metric-x)*-26px),calc(var(--metric-y)*18px))}
+.orbit-two{right:10%;top:34%;transform:translate(calc(var(--metric-x)*30px),calc(var(--metric-y)*-22px))}
+.orbit-three{left:25%;bottom:11%;transform:translate(calc(var(--metric-x)*18px),calc(var(--metric-y)*28px))}
 @keyframes placeholder-sheen{0%,55%{transform:translateX(-55%)}85%,100%{transform:translateX(55%)}}
 
 @media(max-width:900px){
@@ -131,4 +147,5 @@
   .mission{display:block;min-height:0}.profile-card{position:relative;top:auto;margin:60px 18px}.profile-art.profile-placeholder{height:430px}
   .mission-copy{padding:30px 18px 80px}.metric-grid article{min-height:250px;padding:22px 12px}.metric-grid article:nth-child(2),.metric-grid article:nth-child(3){margin-top:0}
   .metric-grid strong{font-size:48px;margin-top:45px}.mission-next{width:100%;margin-top:75px}.mission-next strong{font-size:62px}
+  .interaction-lab{min-height:auto;padding:80px 18px;display:block}.interaction-head h2{font-size:68px;margin:70px 0 55px}.interaction-head p{margin-bottom:60px}.interaction-stage{min-height:72vh}.interaction-core{width:160px;height:160px}.interaction-core b{font-size:64px}.glass-orbit{width:84px;height:84px}
 }
