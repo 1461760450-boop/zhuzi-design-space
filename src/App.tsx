@@ -45,14 +45,14 @@ export default function App() {
   return <div className="hanza-site" id="top">
     <header className="topbar">
       <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
-      <a className="wordmark" href="#top"><i />KIKI’S SPACE</a>
+      <a className="wordmark" href="#top"><i />ZHUZI’S SPACE</a>
       <div className="clock"><strong>{time}</strong><span>LOCAL TIME / CN</span></div>
-      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/KIKI</b><ArrowRight /></a>
+      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/ZHUZI</b><ArrowRight /></a>
     </header>
 
     {menu && <div className="menu-panel">
       <button onClick={() => setMenu(false)}><X /> CLOSE</button>
-      {['关于 Kiki','作品案例','能力服务','创作流程','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#services','#process','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
+      {['关于 ZHUZI','作品案例','能力服务','创作流程','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#services','#process','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
     </div>}
 
     <main>
@@ -68,18 +68,18 @@ export default function App() {
           <div><strong>9 YEARS / 50+ LAUNCHES</strong><p>BRAND, PACKAGING & GLOBAL COMMUNICATION</p></div>
         </div>
         <p className="hero-side-note">INDEPENDENT AI DESIGNER · GUANGZHOU</p>
-        <h1 className="hero-brand">KIKI’S<br />SPACE</h1>
+        <h1 className="hero-brand">ZHUZI’S<br />SPACE</h1>
       </section>
 
       <section className="mission grid-bg" id="about">
         <div className="profile-card">
           <div className="profile-art"><span>K</span><i>AI DESIGNER</i></div>
-          <a href="#contact">GET IN TOUCH <b>/KIKI</b><ArrowRight /></a>
-          <div className="profile-meta"><strong>KIKI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
+          <a href="#contact">GET IN TOUCH <b>/ZHUZI</b><ArrowRight /></a>
+          <div className="profile-meta"><strong>ZHUZI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
         </div>
         <div className="mission-copy">
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
-          <h2>你好，我是 Kiki。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
+          <h2>你好，我是 ZHUZI。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
           <div className="metric-grid">
             <article><small>01 / EXPERIENCE</small><strong>09+</strong><p>年品牌、包装与视觉设计经验。</p></article>
             <article><small>02 / PACKAGES</small><strong>50+</strong><p>完成并进入市场的量产包装。</p></article>
@@ -130,7 +130,7 @@ export default function App() {
           <div><span>EMAIL</span><a href="mailto:1461760450@qq.com">1461760450@qq.com <ArrowUpRight /></a></div>
           <div><span>PHONE / WECHAT</span><a href="tel:+8615700715232">+86 157 0071 5232 <ArrowUpRight /></a></div>
         </div>
-        <footer><a href="#top">KIKI’S SPACE</a><span>AI DESIGNER / VISUAL STRATEGIST</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
+        <footer><a href="#top">ZHUZI’S SPACE</a><span>AI DESIGNER / VISUAL STRATEGIST</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
       </section>
     </main>
 
