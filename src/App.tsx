@@ -56,23 +56,19 @@ export default function App() {
     </div>}
 
     <main>
-      <section className="intro grid-bg">
-        <div className="intro-left">
-          <p className="overline"><i /> INDEPENDENT AI DESIGNER · GUANGZHOU</p>
-          <h1>I turn complex<br />ideas into <em>clear,</em><br />living visuals.</h1>
-          <div className="service-list">
-            <span><b>/01</b>AI 视觉创作</span><span><b>/02</b>品牌与包装</span><span><b>/03</b>数字营销</span>
-          </div>
-        </div>
-        <div className="intro-feature">
-          <video autoPlay muted loop playsInline preload="auto" poster={asset('assets/videos/hanza-flower-poster.png')}><source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" /></video>
-          <div className="video-tag">AI × DESIGN × MOTION</div>
+      <section className="intro">
+        <video className="intro-video" autoPlay muted loop playsInline preload="auto" poster={asset('assets/videos/hanza-flower-poster.png')}><source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" /></video>
+        <div className="intro-shade" />
+        <div className="intro-center">
+          <p>I HELP BRANDS TURN COMPLEX<br />IDEAS INTO CLEAR, LIVING VISUALS.</p>
+          <div><span>/01&nbsp; AI VISUAL DESIGN</span><span>/02&nbsp; BRAND & PACKAGING</span><span>/03&nbsp; GLOBAL CAMPAIGN</span></div>
         </div>
         <div className="trust">
-          <div className="avatar-stack"><span>K</span><span>AI</span><span>09</span></div>
-          <strong>9 YEARS / 50+ LAUNCHES</strong>
-          <p>Trusted visual practice across brand, packaging and global communication.</p>
+          <div className="avatar-stack"><span>K</span><span>AI</span><span>09</span><span>+</span></div>
+          <div><strong>9 YEARS / 50+ LAUNCHES</strong><p>BRAND, PACKAGING & GLOBAL COMMUNICATION</p></div>
         </div>
+        <p className="hero-side-note">INDEPENDENT AI DESIGNER · GUANGZHOU</p>
+        <h1 className="hero-brand">KIKI’S<br />SPACE</h1>
       </section>
 
       <section className="mission grid-bg" id="about">
