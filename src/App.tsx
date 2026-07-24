@@ -97,7 +97,7 @@ export default function App() {
 
   useEffect(() => {
     const root = document.documentElement
-    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
+    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .skill-list article, .process-grid article, .contact-row')
     animated.forEach((element, index) => {
       element.classList.add('scroll-reveal')
       ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
