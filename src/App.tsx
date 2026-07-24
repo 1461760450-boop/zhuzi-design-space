@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -26,17 +26,16 @@ const process = [
 ]
 
 function MissionStatement() {
-  const stageRef = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLHeadingElement>(null)
   const [active, setActive] = useState(0)
   const phrases = ['你好，', '我是 Kiki。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
   useEffect(() => {
     let frame = 0
     const update = () => {
       frame = 0
-      const rect = stageRef.current?.getBoundingClientRect()
+      const rect = ref.current?.getBoundingClientRect()
       if (!rect) return
-      const travel = Math.max(rect.height - window.innerHeight, 1)
-      const progress = Math.max(0, Math.min(1, (window.innerHeight * .16 - rect.top) / travel))
+      const progress = Math.max(0, Math.min(1, (window.innerHeight * .78 - rect.top) / (window.innerHeight * .58)))
       setActive(Math.ceil(progress * phrases.length))
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
@@ -44,9 +43,7 @@ function MissionStatement() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => { window.removeEventListener('scroll', onScroll); if (frame) cancelAnimationFrame(frame) }
   }, [])
-  return <div className="mission-statement-stage" ref={stageRef}>
-    <h2 className="mission-statement">{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
-  </div>
+  return <h2 className="mission-statement" ref={ref}>{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
 }
 
 function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
@@ -78,6 +75,14 @@ export default function App() {
   const [selected, setSelected] = useState<(typeof cases)[number] | null>(null)
   const [time, setTime] = useState('')
 
+  const floatMetrics = (event: PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const x = ((event.clientX - rect.left) / rect.width - .5) * 2
+    const y = ((event.clientY - rect.top) / rect.height - .5) * 2
+    event.currentTarget.style.setProperty('--metric-x', x.toFixed(3))
+    event.currentTarget.style.setProperty('--metric-y', y.toFixed(3))
+  }
+
   useEffect(() => {
     const tick = () => setTime(new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' }).format(new Date()))
     tick()
@@ -92,7 +97,7 @@ export default function App() {
 
   useEffect(() => {
     const root = document.documentElement
-    const animated = document.querySelectorAll('.section-head, .profile-card, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
+    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
     animated.forEach((element, index) => {
       element.classList.add('scroll-reveal')
       ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
@@ -170,11 +175,14 @@ export default function App() {
         <div className="mission-copy">
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
           <MissionStatement />
-          <div className="metric-grid">
-            <article><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></article>
-            <article><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
-            <article><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></article>
-            <article><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></article>
+          <div className="metric-grid" onPointerMove={floatMetrics} onPointerLeave={event => {
+            event.currentTarget.style.setProperty('--metric-x', '0')
+            event.currentTarget.style.setProperty('--metric-y', '0')
+          }}>
+            <article><div className="metric-inner"><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></div></article>
+            <article><div className="metric-inner"><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></div></article>
+            <article><div className="metric-inner"><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></div></article>
+            <article><div className="metric-inner"><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></div></article>
           </div>
           <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
         </div>
