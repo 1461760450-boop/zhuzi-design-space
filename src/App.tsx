@@ -3,261 +3,229 @@ import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
-const cases = [
-  { no: '01', name: 'Bio Foam', year: '2024', image: asset('assets/bio.jpg'), desc: '从产品结构到海外货架呈现，建立清晰、有识别度的包装视觉系统。', tags: ['Packaging', 'Global'] },
-  { no: '02', name: 'Beyond Cloud', year: '2023', image: asset('assets/poster.jpg'), desc: '以视觉叙事连接主 KV、展板、物料与现场空间体验。', tags: ['Campaign', 'Exhibition'] },
-  { no: '03', name: 'Future Beauty', year: '2024', image: asset('assets/details/美妆4.jpg'), desc: '为电商增长打造兼具情绪张力与信息效率的数字内容。', tags: ['E-commerce', 'Visual'] },
-  { no: '04', name: 'Tea Reframed', year: '2022', image: asset('assets/packaging/乐叔的茶方案3.jpg'), desc: '将东方茶饮转译为当代、轻盈并适合商业传播的产品形象。', tags: ['Branding', 'Packaging'] },
+const works = [
+  {
+    no: '01', client: 'BRAND SYSTEM', title: 'Four Brands, One System', year: '2026',
+    image: asset('assets/bio.jpg'), type: 'BRAND / VISUAL SYSTEM',
+    text: '负责 4 个品牌与约 10 个产品系列的视觉建设与维护，让多品牌资产保持清晰、一致与可持续延展。',
+  },
+  {
+    no: '02', client: 'PACKAGING', title: 'From Concept to Shelf', year: '2025',
+    image: asset('assets/packaging/乐叔的茶方案3.jpg'), type: 'PACKAGING / COMMERCE',
+    text: '覆盖建模、效果图、刀模、材质、专色、UV、打样及印刷跟进，累计推动近 50 款包装进入量产。',
+  },
+  {
+    no: '03', client: 'GLOBAL CAMPAIGN', title: 'Across Markets', year: '2025',
+    image: asset('assets/poster.jpg'), type: 'CAMPAIGN / EXHIBITION',
+    text: '为国际展会、LinkedIn、YouTube 与 Facebook 建立统一的视觉传播体验。',
+  },
+  {
+    no: '04', client: 'B2B DIGITAL', title: 'Built for Growth', year: '2026',
+    image: asset('assets/details/美妆4.jpg'), type: 'WEB / GOOGLE ADS',
+    text: '独立统筹英文 B2B 网站从需求分析、服务商筛选、设计开发到上线运营的完整流程。',
+  },
 ]
 
-const skills = [
-  ['01', 'AI Visual Creation', '使用 AIGC 完成概念探索、视觉生成与内容迭代，让创意拥有更宽的可能性。'],
-  ['02', 'Brand Systems', '从品牌 VI 到多产品线规范，构建清晰、统一且可持续生长的视觉资产。'],
-  ['03', 'Packaging & Commerce', '连接概念、打样、印刷与量产，让设计真正进入市场并产生商业价值。'],
-  ['04', 'Global Communication', '服务海外官网、展会与社交媒体，让品牌在不同语境中保持准确表达。'],
+const capabilities = [
+  ['01', '品牌视觉系统', '品牌 VI、多产品线统一、规范制定与视觉资产管理。'],
+  ['02', '包装商业化', '从概念、建模、打样到量产落地与供应链协作。'],
+  ['03', '数字营销设计', 'B2B 官网、Google Ads、落地页与电商视觉。'],
+  ['04', '海外品牌传播', '国际展会、英文宣传片与海外社交媒体内容。'],
 ]
 
-const process = [
-  ['01', 'Listen', '需求洞察', '理解品牌、受众、渠道与真正需要解决的问题。'],
-  ['02', 'Define', '策略定义', '梳理信息层级、视觉方向和可执行的创意边界。'],
-  ['03', 'Explore', 'AI 共创', '用 AIGC 与传统设计方法并行探索，快速验证可能性。'],
-  ['04', 'Craft', '视觉落地', '完成系统设计、动效、打样与跨媒介延展。'],
-  ['05', 'Launch', '交付上线', '跟进制作与上线，并让设计在真实场景中持续生长。'],
-]
-
-function MissionStatement() {
-  const ref = useRef<HTMLHeadingElement>(null)
-  const [active, setActive] = useState(0)
-  const phrases = ['你好，', '我是竹子。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
+function Counter({ end, suffix = '' }: { end: number; suffix?: string }) {
+  const node = useRef<HTMLElement>(null)
+  const [value, setValue] = useState(0)
   useEffect(() => {
-    let frame = 0
-    const update = () => {
-      frame = 0
-      const rect = ref.current?.getBoundingClientRect()
-      if (!rect) return
-      const progress = Math.max(0, Math.min(1, (window.innerHeight * .78 - rect.top) / (window.innerHeight * .58)))
-      setActive(Math.ceil(progress * phrases.length))
-    }
-    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
-    update()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => { window.removeEventListener('scroll', onScroll); if (frame) cancelAnimationFrame(frame) }
-  }, [])
-  return <h2 className="mission-statement" ref={ref}>{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
-}
-
-function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
-  const ref = useRef<HTMLElement>(null)
-  const [display, setDisplay] = useState(0)
-  useEffect(() => {
-    const node = ref.current
-    if (!node) return
-    const observer = new IntersectionObserver(([entry]) => {
+    const el = node.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) return
-      const start = performance.now()
-      const duration = 1100
-      const tick = (now: number) => {
-        const progress = Math.min((now - start) / duration, 1)
-        setDisplay(Math.round(value * (1 - Math.pow(1 - progress, 3))))
-        if (progress < 1) requestAnimationFrame(tick)
+      const started = performance.now()
+      const frame = (time: number) => {
+        const progress = Math.min((time - started) / 1000, 1)
+        setValue(Math.round(end * (1 - Math.pow(1 - progress, 3))))
+        if (progress < 1) requestAnimationFrame(frame)
       }
-      requestAnimationFrame(tick)
-      observer.disconnect()
-    }, { threshold: .45 })
-    observer.observe(node)
-    return () => observer.disconnect()
-  }, [value])
-  return <strong ref={ref}>{String(display).padStart(value < 10 ? 2 : 1, '0')}{suffix}</strong>
+      requestAnimationFrame(frame)
+      io.disconnect()
+    }, { threshold: .4 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [end])
+  return <strong ref={node}>{String(value).padStart(end < 10 ? 2 : 1, '0')}{suffix}</strong>
 }
 
 export default function App() {
   const [menu, setMenu] = useState(false)
-  const [selected, setSelected] = useState<(typeof cases)[number] | null>(null)
   const [time, setTime] = useState('')
 
-  const floatMetrics = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    const x = ((event.clientX - rect.left) / rect.width - .5) * 2
-    const y = ((event.clientY - rect.top) / rect.height - .5) * 2
-    event.currentTarget.style.setProperty('--metric-x', x.toFixed(3))
-    event.currentTarget.style.setProperty('--metric-y', y.toFixed(3))
-  }
-
   useEffect(() => {
-    const tick = () => setTime(new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' }).format(new Date()))
+    const tick = () => setTime(new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai',
+    }).format(new Date()))
     tick()
     const timer = window.setInterval(tick, 30000)
     return () => window.clearInterval(timer)
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menu || selected ? 'hidden' : ''
+    document.body.style.overflow = menu ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [menu, selected])
+  }, [menu])
 
   useEffect(() => {
-    const root = document.documentElement
-    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
-    animated.forEach((element, index) => {
-      element.classList.add('scroll-reveal')
-      ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
-    })
+    const reveal = document.querySelectorAll('[data-reveal]')
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view')
+          entry.target.classList.add('shown')
           observer.unobserve(entry.target)
         }
       })
-    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' })
-    animated.forEach(element => observer.observe(element))
+    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' })
+    reveal.forEach(el => observer.observe(el))
 
-    let frame = 0
-    const updateScroll = () => {
-      frame = 0
-      const y = window.scrollY
-      const heroProgress = Math.min(y / Math.max(window.innerHeight, 1), 1)
-      root.style.setProperty('--hero-scroll', heroProgress.toFixed(4))
-      root.style.setProperty('--page-progress', `${Math.min(y / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1) * 100}%`)
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const max = Math.max(document.documentElement.scrollHeight - innerHeight, 1)
+      document.documentElement.style.setProperty('--page', `${scrollY / max * 100}%`)
+      document.documentElement.style.setProperty('--hero', `${Math.min(scrollY / innerHeight, 1)}`)
     }
-    const onScroll = () => {
-      if (!frame) frame = window.requestAnimationFrame(updateScroll)
-    }
-    updateScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
+    const scroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+    update()
+    addEventListener('scroll', scroll, { passive: true })
     return () => {
       observer.disconnect()
-      window.removeEventListener('scroll', onScroll)
-      if (frame) window.cancelAnimationFrame(frame)
+      removeEventListener('scroll', scroll)
+      if (raf) cancelAnimationFrame(raf)
     }
   }, [])
 
-  return <div className="hanza-site" id="top">
-    <div className="scroll-progress" aria-hidden="true" />
-    <header className="topbar">
-      <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
-      <a className="wordmark" href="#top"><i />竹子®</a>
-      <div className="clock"><strong>{time}</strong><span>LOCAL TIME / CN</span></div>
-      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/ZHUZI</b><ArrowRight /></a>
+  const pointer = (event: PointerEvent<HTMLElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    event.currentTarget.style.setProperty('--x', `${((event.clientX - rect.left) / rect.width - .5) * 2}`)
+    event.currentTarget.style.setProperty('--y', `${((event.clientY - rect.top) / rect.height - .5) * 2}`)
+  }
+
+  const reset = (event: PointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty('--x', '0')
+    event.currentTarget.style.setProperty('--y', '0')
+  }
+
+  return <div className="zhuzi" id="top">
+    <div className="page-progress" />
+    <header className="header">
+      <button onClick={() => setMenu(true)}><Menu /> MENU</button>
+      <a className="brand" href="#top"><i />竹子®</a>
+      <div className="local-time"><b>{time}</b><span>LOCAL TIME / CN</span></div>
+      <a className="start-project" href="#contact">START PROJECT <small>/ ZHUZI</small><ArrowRight /></a>
     </header>
 
-    {menu && <div className="menu-panel">
+    {menu && <nav className="overlay-menu">
       <button onClick={() => setMenu(false)}><X /> CLOSE</button>
-      {['角色介绍','作品案例','互动体验','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#experience','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
-    </div>}
+      {[
+        ['01', '角色介绍', '#about'], ['02', '作品案例', '#work'],
+        ['03', '互动体验', '#experience'], ['04', '联系方式', '#contact'],
+      ].map(([no, label, href]) => <a href={href} key={no} onClick={() => setMenu(false)}>
+        <small>{no}</small><span>{label}</span><ArrowUpRight />
+      </a>)}
+    </nav>}
 
     <main>
-      <section className="intro">
-        <video className="intro-video" autoPlay muted loop playsInline preload="auto" poster={asset('assets/videos/hanza-flower-poster.png')}><source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" /></video>
-        <div className="intro-shade" />
-        <div className="intro-center">
-          <p>I SHAPE COMPLEX PRODUCTS<br />INTO CLEAR, LIVING VISUALS.</p>
-          <div><span>/01&nbsp; BRAND VISUAL SYSTEM</span><span>/02&nbsp; PACKAGING & COMMERCE</span><span>/03&nbsp; GLOBAL COMMUNICATION</span></div>
+      <section className="hero">
+        <video autoPlay muted loop playsInline poster={asset('assets/videos/hanza-flower-poster.png')}>
+          <source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" />
+        </video>
+        <div className="hero-shade" />
+        <div className="hero-statement">
+          <p>I TURN COMPLEX PRODUCTS<br />INTO CLEAR, LIVING VISUALS.</p>
+          <div><span>/01&nbsp; BRAND SYSTEM</span><span>/02&nbsp; PACKAGING</span><span>/03&nbsp; GLOBAL COMMUNICATION</span></div>
         </div>
-        <div className="trust">
-          <div className="avatar-stack"><span>K</span><span>AI</span><span>09</span><span>+</span></div>
-          <div><strong>9 YEARS / 50+ LAUNCHES</strong><p>BRAND, PACKAGING & GLOBAL COMMUNICATION</p></div>
-        </div>
-        <p className="hero-side-note">VISUAL DESIGNER · GUANGZHOU</p>
-        <h1 className="hero-brand">竹子®<br />ZHUZI</h1>
+        <p className="hero-role">VISUAL DESIGNER · GUANGZHOU</p>
+        <div className="hero-proof"><b>09+</b><span>YEARS OF<br />VISUAL PRACTICE</span></div>
+        <h1>竹子®</h1>
       </section>
 
-      <div className="expertise-strip" aria-label="核心能力">
-        {['BRAND SYSTEM', 'PACKAGING', 'AIGC', 'B2B WEBSITE', 'GLOBAL EXPO', 'E-COMMERCE', 'MOTION', '3D VISUAL'].map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, '0')}</b>{item}</span>)}
-      </div>
+      <section className="brand-strip">
+        {['BRAND SYSTEM', 'PACKAGING', 'B2B WEBSITE', 'GOOGLE ADS', 'GLOBAL EXPO', 'SOCIAL MEDIA', 'MOTION', 'AIGC'].map((item, i) =>
+          <span key={item}><i>{String(i + 1).padStart(2, '0')}</i>{item}</span>)}
+      </section>
 
-      <section className="mission grid-bg" id="about">
-        <div className="profile-card">
-          <div className="profile-art profile-placeholder"><span>PORTRAIT</span><i>COMING SOON</i></div>
-          <a href="#contact">GET IN TOUCH <b>/ZHUZI</b><ArrowRight /></a>
-          <div className="profile-meta"><strong>竹子 · 彭著娟 AMY</strong><p><span>PROFESSION</span>VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
-        </div>
-        <div className="mission-copy">
-          <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
-          <MissionStatement />
-          <div className="metric-grid" onPointerMove={floatMetrics} onPointerLeave={event => {
-            event.currentTarget.style.setProperty('--metric-x', '0')
-            event.currentTarget.style.setProperty('--metric-y', '0')
-          }}>
-            <div className="metric-column">
-              <article className="metric-one"><div className="metric-inner"><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></div></article>
-              <article className="metric-three"><div className="metric-inner"><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></div></article>
+      <section className="about grid" id="about">
+        <aside className="profile-card" data-reveal>
+          <div className="portrait"><span>PORTRAIT</span><i>COMING SOON</i></div>
+          <a href="#contact">GET IN TOUCH <small>/ ZHUZI</small><ArrowRight /></a>
+          <div className="profile-meta">
+            <b>竹子 · 彭著娟 AMY</b>
+            <p><span>PROFESSION</span>VISUAL DESIGNER</p>
+            <p><span>LOCATION</span>GUANGZHOU, CHINA</p>
+          </div>
+        </aside>
+
+        <div className="about-content">
+          <div className="label"><i />01&nbsp;&nbsp; MY MISSION <span>©2017-2026</span></div>
+          <h2 data-reveal>你好，我是竹子。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
+          <div className="metrics" onPointerMove={pointer} onPointerLeave={reset}>
+            <div>
+              <article className="metric-accent"><small>01 / PACKAGES</small><Counter end={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></article>
+              <article><small>03 / EXPERIENCE</small><Counter end={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></article>
             </div>
-            <div className="metric-column metric-column-right">
-              <article className="metric-two"><div className="metric-inner"><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></div></article>
-              <article className="metric-four"><div className="metric-inner"><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></div></article>
+            <div className="metric-right">
+              <article className="metric-accent"><small>02 / PRODUCT SERIES</small><Counter end={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
+              <article><small>04 / BRANDS</small><Counter end={6} /><p>参与建设与维护的品牌视觉系统。</p></article>
             </div>
           </div>
-          <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
+          <div className="work-lead" data-reveal><small><i />02&nbsp;&nbsp; PORTFOLIO</small><h3><span>CASE</span><br />STUDIES.</h3><p>STRATEGY, SYSTEM AND<br />COMMERCIAL DELIVERY.</p></div>
         </div>
       </section>
 
-      <section className="cases" id="work">
-        <div className="section-head">
-          <div><small>02 &nbsp; PORTFOLIO</small><h2>Case Studies.</h2></div>
-          <p>每个项目都展示我如何在策略、创意、制作与商业目标之间建立连接。</p>
-          <button onClick={() => document.querySelector('.case-row')?.scrollIntoView({ behavior: 'smooth' })}>ALL PROJECTS <ArrowRight /></button>
+      <section className="work" id="work">
+        <div className="section-heading" data-reveal>
+          <div><small>02&nbsp;&nbsp; PORTFOLIO</small><h2>SELECTED<br />WORK.</h2></div>
+          <p>从品牌系统与包装量产，到 B2B 网站、数字营销和全球传播，设计最终要进入真实商业场景。</p>
         </div>
-        <div className="case-list">
-          {cases.map(item => <button className="case-row" key={item.name} onClick={() => setSelected(item)}>
-            <span className="case-no">{item.no}</span>
-            <span><small>PROJECT</small><strong>{item.name}</strong></span>
-            <span><small>YEAR</small>{item.year}</span>
-            <div className="case-image"><img src={item.image} alt={item.name} loading="lazy" /><i>VIEW PROJECT</i></div>
-            <p>{item.desc}</p>
-            <div className="case-tags">{item.tags.map(tag => <em key={tag}>{tag}</em>)}</div>
-          </button>)}
+        <div className="work-list">
+          {works.map(work => <article key={work.no} data-reveal>
+            <span className="work-no">{work.no}</span>
+            <div className="work-name"><small>CLIENT / FIELD</small><h3>{work.title}</h3><p>{work.client}</p></div>
+            <div className="work-year"><small>YEAR</small><b>{work.year}</b></div>
+            <div className="work-image"><img src={work.image} alt={work.title} loading="lazy" /><i>VIEW PROJECT</i></div>
+            <div className="work-copy"><small>{work.type}</small><p>{work.text}</p></div>
+            <button aria-label={`查看 ${work.title}`}><ArrowUpRight /></button>
+          </article>)}
         </div>
       </section>
 
-      <section className="services grid-bg" id="services">
-        <div className="section-head">
-          <div><small>03 &nbsp; SERVICES</small><h2>What I Create.</h2></div>
-          <p>从第一张概念草图到量产与上线，建立兼具创意张力和落地能力的完整设计体验。</p>
+      <section className="capabilities grid">
+        <div className="section-heading" data-reveal>
+          <div><small>03&nbsp;&nbsp; CAPABILITIES</small><h2>WHAT I<br />CREATE.</h2></div>
+          <p>将品牌策略、视觉表达、制作工艺与传播渠道连接成完整的设计结果。</p>
         </div>
-        <div className="skill-list">{skills.map(([no,title,desc]) => <article key={no}><span>{no}</span><h3>{title}</h3><p>{desc}</p><ArrowUpRight /></article>)}</div>
+        <div className="capability-list">
+          {capabilities.map(([no, name, text]) => <article key={no} data-reveal><span>{no}</span><h3>{name}</h3><p>{text}</p><ArrowUpRight /></article>)}
+        </div>
       </section>
 
-      <section className="process" id="process">
-        <div className="section-head">
-          <div><small>04 &nbsp; PROCESS</small><h2>5 Steps to Launch.</h2></div>
-          <p>让过程保持简单透明：理解、定义、探索、落地、发布。</p>
-        </div>
-        <div className="process-grid">{process.map(([no,en,cn,text]) => <article key={no}><strong>{no}</strong><small>{en}</small><h3>{cn}</h3><p>{text}</p></article>)}</div>
-      </section>
-
-      <section className="interaction-lab" id="experience" onPointerMove={floatMetrics} onPointerLeave={event => {
-        event.currentTarget.style.setProperty('--metric-x', '0')
-        event.currentTarget.style.setProperty('--metric-y', '0')
-      }}>
-        <div className="interaction-head">
-          <small>05 &nbsp; INTERACTIVE EXPERIENCE</small>
-          <h2>MOVE.<br /><em>FEEL.</em><br />DISCOVER.</h2>
-          <p>移动鼠标，感受视觉系统在秩序与变化之间的呼吸。这里将用于承载后续的 AI 视觉实验、动态图形与交互作品。</p>
-        </div>
-        <div className="interaction-stage" aria-label="鼠标互动体验">
-          <div className="glass-orbit orbit-one"><span>BRAND</span></div>
-          <div className="glass-orbit orbit-two"><span>MOTION</span></div>
-          <div className="glass-orbit orbit-three"><span>AIGC</span></div>
-          <div className="interaction-core"><b>竹</b><small>MOVE YOUR CURSOR</small></div>
+      <section className="experience" id="experience" onPointerMove={pointer} onPointerLeave={reset}>
+        <div className="experience-copy" data-reveal><small>04&nbsp;&nbsp; INTERACTIVE EXPERIENCE</small><h2>MOVE.<br /><em>FEEL.</em><br />DISCOVER.</h2><p>移动鼠标，感受视觉元素在秩序与变化之间产生呼吸。后续这里会承载 AI 视觉实验、动态海报和交互作品。</p></div>
+        <div className="experience-stage">
+          <div className="ring ring-a" /><div className="ring ring-b" />
+          <div className="satellite s-one">BRAND</div><div className="satellite s-two">MOTION</div><div className="satellite s-three">AIGC</div>
+          <div className="core"><b>竹</b><span>MOVE YOUR CURSOR</span></div>
         </div>
       </section>
 
       <section className="contact" id="contact">
-        <small>06 &nbsp; CONTACT</small>
-        <h2>Ready to make<br />something <em>alive?</em></h2>
-        <div className="contact-row">
-          <div><span>EMAIL</span><a href="mailto:1461760450@qq.com">1461760450@qq.com <ArrowUpRight /></a></div>
-          <div><span>PHONE / WECHAT</span><a href="tel:+8615700715232">+86 157 0071 5232 <ArrowUpRight /></a></div>
+        <small>05&nbsp;&nbsp; CONTACT</small>
+        <h2>LET’S MAKE<br />SOMETHING <em>ALIVE.</em></h2>
+        <div className="contact-links">
+          <a href="mailto:1461760450@qq.com"><span>EMAIL</span>1461760450@qq.com<ArrowUpRight /></a>
+          <a href="tel:+8615700715232"><span>PHONE / WECHAT</span>+86 157 0071 5232<ArrowUpRight /></a>
         </div>
-        <footer><a href="#top">竹子® ZHUZI</a><span>VISUAL DESIGNER / BRAND & COMMUNICATION</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
+        <footer><a href="#top">竹子®</a><span>VISUAL DESIGNER / BRAND & COMMUNICATION</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
       </section>
     </main>
-
-    {selected && <div className="case-modal">
-      <button onClick={() => setSelected(null)}><X /></button>
-      <div className="modal-image"><img src={selected.image} alt={selected.name} /></div>
-      <div className="modal-info"><small>{selected.no} / {selected.year}</small><h2>{selected.name}</h2><p>{selected.desc}</p><div>{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div><em>完整案例将在下一轮素材整理后展开。</em></div>
-    </div>}
   </div>
 }
