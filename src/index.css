@@ -146,6 +146,11 @@
 .mission.grid-bg{background-image:none}
 .mission .metric-grid article:nth-child(even){border-left:0}
 
+/* Improve muted copy legibility across the site */
+.clock span,.mini-title,.metric-grid small,.section-head small,.case-row small,.contact-row span,.modal-info small,.modal-info em{font-size:10px}
+.trust p,.profile-meta p,.metric-grid p,.section-head p,.case-row>p,.skill-list p,.process-grid p,.modal-info p{font-size:13px;line-height:1.65}
+.profile-meta p span{font-size:10px}
+
 @media(max-width:900px){
   .mission{display:block}.profile-card{position:relative;top:auto;margin:60px 18px}
   .mission-copy{padding:30px 18px 80px}
