@@ -42,7 +42,45 @@ export default function App() {
     return () => { document.body.style.overflow = '' }
   }, [menu, selected])
 
+  useEffect(() => {
+    const root = document.documentElement
+    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
+    animated.forEach((element, index) => {
+      element.classList.add('scroll-reveal')
+      ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
+    })
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' })
+    animated.forEach(element => observer.observe(element))
+
+    let frame = 0
+    const updateScroll = () => {
+      frame = 0
+      const y = window.scrollY
+      const heroProgress = Math.min(y / Math.max(window.innerHeight, 1), 1)
+      root.style.setProperty('--hero-scroll', heroProgress.toFixed(4))
+      root.style.setProperty('--page-progress', `${Math.min(y / Math.max(document.documentElement.scrollHeight - window.innerHeight, 1), 1) * 100}%`)
+    }
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(updateScroll)
+    }
+    updateScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', onScroll)
+      if (frame) window.cancelAnimationFrame(frame)
+    }
+  }, [])
+
   return <div className="hanza-site" id="top">
+    <div className="scroll-progress" aria-hidden="true" />
     <header className="topbar">
       <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
       <a className="wordmark" href="#top"><i />KIKI’S SPACE</a>

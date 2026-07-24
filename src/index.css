@@ -32,3 +32,26 @@
   .hero-brand br{display:block}
   .trust{left:18px;bottom:2vh;transform:scale(.78);transform-origin:left bottom}
 }
+
+/* Hanza-inspired scroll choreography */
+.scroll-progress{position:fixed;z-index:90;left:0;top:0;width:var(--page-progress,0%);height:2px;background:var(--red);pointer-events:none;transition:width .08s linear}
+.intro-video{transform:scale(calc(1.015 + var(--hero-scroll,0) * .08));filter:saturate(.84) contrast(1.04) brightness(calc(1 - var(--hero-scroll,0) * .2));will-change:transform,filter}
+.intro-center{transform:translateY(calc(var(--hero-scroll,0) * -45px));opacity:calc(1 - var(--hero-scroll,0) * 1.3);will-change:transform,opacity}
+.hero-brand{transform:translateY(calc(var(--hero-scroll,0) * 70px));opacity:calc(1 - var(--hero-scroll,0) * 1.25);will-change:transform,opacity}
+.trust{opacity:calc(1 - var(--hero-scroll,0) * 1.45);will-change:opacity}
+.hero-side-note{transform:translateY(calc(var(--hero-scroll,0) * -25px));opacity:calc(1 - var(--hero-scroll,0) * 1.6)}
+.scroll-reveal{opacity:0;transform:translateY(54px);transition:opacity .85s cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms),transform .95s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms)}
+.scroll-reveal.in-view{opacity:1;transform:translateY(0)}
+.metric-grid article.scroll-reveal,.process-grid article.scroll-reveal{transform:translateY(70px) scale(.985)}
+.metric-grid article.scroll-reveal.in-view,.process-grid article.scroll-reveal.in-view{transform:translateY(0) scale(1)}
+.case-row.scroll-reveal{clip-path:inset(0 0 100% 0);transform:translateY(35px);transition:opacity .75s ease var(--reveal-delay,0ms),transform .9s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms),clip-path 1s cubic-bezier(.16,1,.3,1) var(--reveal-delay,0ms)}
+.case-row.scroll-reveal.in-view{clip-path:inset(0 0 0 0);transform:translateY(0)}
+.section-head.scroll-reveal h2{transform:translateY(.3em);transition:transform 1.05s cubic-bezier(.16,1,.3,1) .08s}
+.section-head.scroll-reveal.in-view h2{transform:translateY(0)}
+.case-image img{will-change:transform}.case-row:hover .case-image img{transform:scale(1.065) translateY(-1.5%)}
+
+@media(prefers-reduced-motion:reduce){
+  .intro-video,.intro-center,.hero-brand,.trust,.hero-side-note{transform:none!important;opacity:1!important;filter:none!important}
+  .scroll-reveal,.scroll-reveal.in-view,.section-head.scroll-reveal h2,.case-row.scroll-reveal{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+  .scroll-progress{display:none}
+}
