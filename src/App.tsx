@@ -10,6 +10,23 @@ const cases = [
   { no: '04', name: 'Found Fair Digital Growth', year: '2026', image: asset('assets/web-brand.jpg'), desc: '围绕宠物用品海外获客，完成英文 B2B 网站、产品视觉与 Google Ads 素材协同，连接品牌表达、产品信息与询盘转化。', tags: ['B2B Website', 'Digital Marketing'] },
 ]
 
+const archiveFilters = ['全部', '包装', '画册', '详情页', '展会活动', 'Logo', 'PPT'] as const
+
+const archiveWorks = [
+  { title: 'TRÀII 新年礼盒', category: '包装', image: asset('assets/pack-gift.jpg') },
+  { title: '乐叔的茶方案 3', category: '包装', image: asset('assets/packaging/乐叔的茶方案3.jpg') },
+  { title: '偻里奶茶杯 2', category: '包装', image: asset('assets/packaging/偻里奶茶杯2.jpg') },
+  { title: 'FOTANIKAL 品牌标志', category: 'Logo', image: asset('assets/logo/7.jpg') },
+  { title: '美妆产品详情', category: '详情页', image: asset('assets/details/美妆.jpg') },
+  { title: '美妆视觉系列 2', category: '详情页', image: asset('assets/details/美妆2.jpg') },
+  { title: '美妆视觉系列 4', category: '详情页', image: asset('assets/details/美妆4.jpg') },
+  { title: '美妆品牌首页', category: '详情页', image: asset('assets/details/美妆首页.jpg') },
+  { title: '球类产品详情', category: '详情页', image: asset('assets/details/1.球类详情.jpg') },
+  { title: '汽车产品画册', category: '画册', image: asset('assets/brochure/汽车画册.jpg') },
+  { title: '海外展会视觉', category: '展会活动', image: asset('assets/exhibition.jpg') },
+  { title: '品牌提案演示', category: 'PPT', image: asset('assets/canberra.jpg') },
+]
+
 const skills = [
   ['01', 'AI Visual Creation', '使用 AIGC 完成概念探索、视觉生成与内容迭代，让创意拥有更宽的可能性。'],
   ['02', 'Brand Systems', '从品牌 VI 到多产品线规范，构建清晰、统一且可持续生长的视觉资产。'],
@@ -73,7 +90,10 @@ function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
 export default function App() {
   const [menu, setMenu] = useState(false)
   const [selected, setSelected] = useState<(typeof cases)[number] | null>(null)
+  const [activeArchiveFilter, setActiveArchiveFilter] = useState<(typeof archiveFilters)[number]>('全部')
+  const [archiveSelected, setArchiveSelected] = useState<(typeof archiveWorks)[number] | null>(null)
   const [time, setTime] = useState('')
+  const visibleArchiveWorks = activeArchiveFilter === '全部' ? archiveWorks : archiveWorks.filter(item => item.category === activeArchiveFilter)
 
   const floatMetrics = (event: PointerEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
@@ -91,9 +111,9 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menu || selected ? 'hidden' : ''
+    document.body.style.overflow = menu || selected || archiveSelected ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [menu, selected])
+  }, [menu, selected, archiveSelected])
 
   useEffect(() => {
     const root = document.documentElement
@@ -199,6 +219,21 @@ export default function App() {
             <div className="case-tags">{item.tags.map(tag => <em key={tag}>{tag}</em>)}</div>
           </button>)}
         </div>
+
+        <div className="archive">
+          <div className="archive-heading"><span>COMPLETE ARCHIVE</span><h3>完整作品档案</h3></div>
+          <nav className="archive-filters" aria-label="作品分类">
+            {archiveFilters.map(filter => <button className={activeArchiveFilter === filter ? 'active' : ''} key={filter} onClick={() => setActiveArchiveFilter(filter)}>{filter}</button>)}
+          </nav>
+          <div className="archive-grid">
+            {visibleArchiveWorks.map((item, index) => <button className="archive-card" key={item.title} onClick={() => setArchiveSelected(item)}>
+              <img src={item.image} alt={item.title} loading="lazy" />
+              <span className="archive-type">{item.category === 'Logo' ? 'LOGO' : 'IMAGE'}</span>
+              <ArrowUpRight />
+              <div className="archive-caption"><small>{item.category} / IMAGE</small><strong>{item.title}</strong><em>{String(index + 1).padStart(2, '0')}</em></div>
+            </button>)}
+          </div>
+        </div>
       </section>
 
       <section className="services grid-bg" id="services">
@@ -232,6 +267,11 @@ export default function App() {
       <button onClick={() => setSelected(null)}><X /></button>
       <div className="modal-image"><img src={selected.image} alt={selected.name} /></div>
       <div className="modal-info"><small>{selected.no} / {selected.year}</small><h2>{selected.name}</h2><p>{selected.desc}</p><div>{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div><em>完整案例将在下一轮素材整理后展开。</em></div>
+    </div>}
+    {archiveSelected && <div className="archive-modal" onClick={() => setArchiveSelected(null)}>
+      <button aria-label="关闭作品预览" onClick={() => setArchiveSelected(null)}><X /></button>
+      <img src={archiveSelected.image} alt={archiveSelected.title} onClick={event => event.stopPropagation()} />
+      <div><small>{archiveSelected.category}</small><strong>{archiveSelected.title}</strong></div>
     </div>}
   </div>
 }
