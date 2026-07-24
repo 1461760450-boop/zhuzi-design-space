@@ -4,10 +4,10 @@ import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 const cases = [
-  { no: '01', name: 'Bio Foam', year: '2024', image: asset('assets/bio.jpg'), desc: '从产品结构到海外货架呈现，建立清晰、有识别度的包装视觉系统。', tags: ['Packaging', 'Global'] },
-  { no: '02', name: 'Beyond Cloud', year: '2023', image: asset('assets/poster.jpg'), desc: '以视觉叙事连接主 KV、展板、物料与现场空间体验。', tags: ['Campaign', 'Exhibition'] },
-  { no: '03', name: 'Future Beauty', year: '2024', image: asset('assets/details/美妆4.jpg'), desc: '为电商增长打造兼具情绪张力与信息效率的数字内容。', tags: ['E-commerce', 'Visual'] },
-  { no: '04', name: 'Tea Reframed', year: '2022', image: asset('assets/packaging/乐叔的茶方案3.jpg'), desc: '将东方茶饮转译为当代、轻盈并适合商业传播的产品形象。', tags: ['Branding', 'Packaging'] },
+  { no: '01', name: 'Bio Foam 3.0', year: '2024', image: asset('assets/bio.jpg'), desc: '围绕环保材料与全天候舒适卖点，重构 Dr. Scholl’s Bio Foam 鞋垫包装的信息层级、结构展示与海外货架识别。', tags: ['Packaging System', 'Commercialization'] },
+  { no: '02', name: 'TRÀII Golf Series', year: '2024', image: asset('assets/pack-gift.jpg'), desc: '从高尔夫鞋垫产品定位出发，统一礼盒结构、视觉语言、功能图标与双语信息，形成可量产的系列包装方案。', tags: ['Product Series', 'Packaging'] },
+  { no: '03', name: 'FOTANIKAL Global Expo', year: '2025', image: asset('assets/booth.jpg'), desc: '为海外宠物展建立主视觉与传播物料体系，覆盖展板、产品信息、现场物料和社交媒体内容，保持跨场景表达一致。', tags: ['Global Campaign', 'Exhibition'] },
+  { no: '04', name: 'Found Fair Digital Growth', year: '2026', image: asset('assets/web-brand.jpg'), desc: '围绕宠物用品海外获客，完成英文 B2B 网站、产品视觉与 Google Ads 素材协同，连接品牌表达、产品信息与询盘转化。', tags: ['B2B Website', 'Digital Marketing'] },
 ]
 
 const skills = [
