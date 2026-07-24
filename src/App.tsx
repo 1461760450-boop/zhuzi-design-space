@@ -1,37 +1,33 @@
-import { useEffect, useRef, useState, type PointerEvent } from 'react'
-import { ArrowDownRight, ArrowUpRight, Mail, Menu, Phone, Sparkles, X } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
-const works = [
-  { no: '01', type: 'BRAND / PACKAGING', title: 'Warm Ritual', note: '品牌包装与视觉系统', image: asset('assets/packaging/礼盒.jpg'), tone: 'light' },
-  { no: '02', type: 'EXHIBITION / KV', title: 'Beyond Cloud', note: '展会主视觉与空间延展', image: asset('assets/poster.jpg'), tone: 'dark' },
-  { no: '03', type: 'COMMERCE / DIGITAL', title: 'Future Beauty', note: '电商内容与数字营销', image: asset('assets/details/美妆4.jpg'), tone: 'light' },
-  { no: '04', type: 'IDENTITY / OBJECT', title: 'Tea, Reframed', note: '产品概念与商业化设计', image: asset('assets/packaging/乐叔的茶方案3.jpg'), tone: 'warm' },
+const cases = [
+  { no: '01', name: 'Bio Foam', year: '2024', image: asset('assets/bio.jpg'), desc: '从产品结构到海外货架呈现，建立清晰、有识别度的包装视觉系统。', tags: ['Packaging', 'Global'] },
+  { no: '02', name: 'Beyond Cloud', year: '2023', image: asset('assets/poster.jpg'), desc: '以视觉叙事连接主 KV、展板、物料与现场空间体验。', tags: ['Campaign', 'Exhibition'] },
+  { no: '03', name: 'Future Beauty', year: '2024', image: asset('assets/details/美妆4.jpg'), desc: '为电商增长打造兼具情绪张力与信息效率的数字内容。', tags: ['E-commerce', 'Visual'] },
+  { no: '04', name: 'Tea Reframed', year: '2022', image: asset('assets/packaging/乐叔的茶方案3.jpg'), desc: '将东方茶饮转译为当代、轻盈并适合商业传播的产品形象。', tags: ['Branding', 'Packaging'] },
 ]
 
-function MagneticOrb() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [point, setPoint] = useState({ x: 50, y: 50 })
-  const move = (event: PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    setPoint({ x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100 })
-  }
-  return (
-    <div className="playground" ref={ref} onPointerMove={move} onPointerLeave={() => setPoint({ x: 50, y: 50 })}>
-      <div className="play-grid" />
-      <div className="orb-glow" style={{ left: `${point.x}%`, top: `${point.y}%` }} />
-      <div className="orb" style={{ left: `${point.x}%`, top: `${point.y}%` }}>
-        <span>KIKI</span><i>AI</i>
-      </div>
-      <p>移动光标<br />改变创意引力场</p>
-    </div>
-  )
-}
+const skills = [
+  ['01', 'AI Visual Creation', '使用 AIGC 完成概念探索、视觉生成与内容迭代，让创意拥有更宽的可能性。'],
+  ['02', 'Brand Systems', '从品牌 VI 到多产品线规范，构建清晰、统一且可持续生长的视觉资产。'],
+  ['03', 'Packaging & Commerce', '连接概念、打样、印刷与量产，让设计真正进入市场并产生商业价值。'],
+  ['04', 'Global Communication', '服务海外官网、展会与社交媒体，让品牌在不同语境中保持准确表达。'],
+]
+
+const process = [
+  ['01', 'Listen', '需求洞察', '理解品牌、受众、渠道与真正需要解决的问题。'],
+  ['02', 'Define', '策略定义', '梳理信息层级、视觉方向和可执行的创意边界。'],
+  ['03', 'Explore', 'AI 共创', '用 AIGC 与传统设计方法并行探索，快速验证可能性。'],
+  ['04', 'Craft', '视觉落地', '完成系统设计、动效、打样与跨媒介延展。'],
+  ['05', 'Launch', '交付上线', '跟进制作与上线，并让设计在真实场景中持续生长。'],
+]
 
 export default function App() {
   const [menu, setMenu] = useState(false)
-  const [selected, setSelected] = useState<(typeof works)[number] | null>(null)
+  const [selected, setSelected] = useState<(typeof cases)[number] | null>(null)
   const [time, setTime] = useState('')
 
   useEffect(() => {
@@ -42,105 +38,110 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = selected || menu ? 'hidden' : ''
+    document.body.style.overflow = menu || selected ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [selected, menu])
+  }, [menu, selected])
 
-  const closeMenu = () => setMenu(false)
+  return <div className="hanza-site" id="top">
+    <header className="topbar">
+      <button className="menu-toggle" onClick={() => setMenu(true)}><Menu /> <span>MENU</span></button>
+      <a className="wordmark" href="#top"><i />KIKI’S SPACE</a>
+      <div className="clock"><strong>{time}</strong><span>LOCAL TIME / CN</span></div>
+      <a className="project-cta" href="#contact"><span>START PROJECT</span><b>/KIKI</b><ArrowRight /></a>
+    </header>
 
-  return (
-    <div className="site" id="top">
-      <header className="nav">
-        <a href="#top" className="logo" aria-label="kiki's space 首页">
-          <span className="logo-dot" />kiki’s space
-        </a>
-        <nav className={menu ? 'nav-links open' : 'nav-links'}>
-          <button className="mobile-close" onClick={closeMenu} aria-label="关闭菜单"><X /></button>
-          <a href="#about" onClick={closeMenu}>角色介绍 <small>01</small></a>
-          <a href="#works" onClick={closeMenu}>作品案例 <small>02</small></a>
-          <a href="#play" onClick={closeMenu}>互动体验 <small>03</small></a>
-          <a href="#contact" onClick={closeMenu}>联系方式 <small>04</small></a>
-        </nav>
-        <div className="nav-status"><span>CN · {time}</span><i />AVAILABLE</div>
-        <button className="mobile-menu" onClick={() => setMenu(true)} aria-label="打开菜单"><Menu /></button>
-      </header>
+    {menu && <div className="menu-panel">
+      <button onClick={() => setMenu(false)}><X /> CLOSE</button>
+      {['关于 Kiki','作品案例','能力服务','创作流程','联系方式'].map((item, i) => <a key={item} href={['#about','#work','#services','#process','#contact'][i]} onClick={() => setMenu(false)}><small>0{i + 1}</small>{item}<ArrowUpRight /></a>)}
+    </div>}
 
-      <main>
-        <section className="hero">
-          <video autoPlay muted loop playsInline preload="metadata" poster={asset('assets/poster.jpg')}>
-            <source src={asset('assets/videos/foldcraft-lab.mp4')} type="video/mp4" />
-          </video>
-          <div className="hero-shade" />
-          <div className="hero-copy max">
-            <div className="hero-kicker"><Sparkles /> AI DESIGNER · VISUAL STRATEGIST</div>
-            <h1><span>Ideas into</span><br /><em>living</em> visuals.</h1>
-            <div className="hero-foot">
-              <p>让想象不只停留在屏幕。<br />融合 AI、策略与视觉，创造有生命力的品牌体验。</p>
-              <a href="#works" className="round-link">VIEW WORKS <ArrowDownRight /></a>
-            </div>
+    <main>
+      <section className="intro grid-bg">
+        <div className="intro-left">
+          <p className="overline"><i /> INDEPENDENT AI DESIGNER · GUANGZHOU</p>
+          <h1>I turn complex<br />ideas into <em>clear,</em><br />living visuals.</h1>
+          <div className="service-list">
+            <span><b>/01</b>AI 视觉创作</span><span><b>/02</b>品牌与包装</span><span><b>/03</b>数字营销</span>
           </div>
-          <div className="hero-index">PORTFOLIO · 2026</div>
-        </section>
+        </div>
+        <div className="intro-feature">
+          <video autoPlay muted loop playsInline poster={asset('assets/poster.jpg')}><source src={asset('assets/videos/foldcraft-lab.mp4')} type="video/mp4" /></video>
+          <div className="video-tag">AI × DESIGN × MOTION</div>
+        </div>
+        <div className="trust">
+          <div className="avatar-stack"><span>K</span><span>AI</span><span>09</span></div>
+          <strong>9 YEARS / 50+ LAUNCHES</strong>
+          <p>Trusted visual practice across brand, packaging and global communication.</p>
+        </div>
+      </section>
 
-        <section className="about max" id="about">
-          <div className="section-label"><span>01</span> ROLE / ABOUT</div>
-          <div className="about-grid">
-            <h2>I’m Kiki.<br />AI 设计师，<br /><span>也是视觉问题的解题者。</span></h2>
-            <div className="about-copy">
-              <p>拥有近 9 年品牌与视觉设计经验，从品牌系统、产品商业化到海外市场传播，我擅长把复杂需求转化为清晰、准确且富有情绪的视觉语言。</p>
-              <p>现在，我将 AIGC 融入完整的设计流程：更快探索，更深表达，也让每一个创意拥有新的生长方式。</p>
-              <div className="stats">
-                <div><strong>09</strong><span>YEARS<br />EXPERIENCE</span></div>
-                <div><strong>50+</strong><span>PACKAGES<br />LAUNCHED</span></div>
-                <div><strong>20+</strong><span>PRODUCT<br />SERIES</span></div>
-              </div>
-            </div>
+      <section className="mission grid-bg" id="about">
+        <div className="profile-card">
+          <div className="profile-art"><span>K</span><i>AI DESIGNER</i></div>
+          <a href="#contact">GET IN TOUCH <b>/KIKI</b><ArrowRight /></a>
+          <div className="profile-meta"><strong>KIKI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
+        </div>
+        <div className="mission-copy">
+          <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
+          <h2>你好，我是 Kiki。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
+          <div className="metric-grid">
+            <article><small>01 / EXPERIENCE</small><strong>09+</strong><p>年品牌、包装与视觉设计经验。</p></article>
+            <article><small>02 / PACKAGES</small><strong>50+</strong><p>完成并进入市场的量产包装。</p></article>
+            <article><small>03 / SERIES</small><strong>20+</strong><p>跨鞋垫、护具、宠物与消费品系列。</p></article>
+            <article><small>04 / BRANDS</small><strong>06</strong><p>持续服务的品牌视觉与商业系统。</p></article>
           </div>
-          <div className="capability-strip">
-            {['AIGC VISUAL', 'BRAND SYSTEM', 'PACKAGING', '3D & MOTION', 'GLOBAL CAMPAIGN'].map(x => <span key={x}>{x}<i>✦</i></span>)}
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="work-section" id="works">
-          <div className="max">
-            <div className="section-label light"><span>02</span> SELECTED WORKS</div>
-            <div className="works-title"><h2>Selected<br /><em>experiments.</em></h2><p>品牌、影像、海报与数字体验。<br />每个项目都是一次新的视觉实验。</p></div>
-            <div className="work-grid">
-              {works.map((work, index) => (
-                <button className={`work-card ${index % 3 === 0 ? 'wide' : ''}`} key={work.title} onClick={() => setSelected(work)}>
-                  <div className="work-image"><img src={work.image} alt={work.title} loading={index > 1 ? 'lazy' : 'eager'} /><span>VIEW CASE <ArrowUpRight /></span></div>
-                  <div className="work-meta"><small>{work.no} — {work.type}</small><h3>{work.title}</h3><p>{work.note}</p></div>
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+      <section className="cases" id="work">
+        <div className="section-head">
+          <div><small>02 &nbsp; PORTFOLIO</small><h2>Case Studies.</h2></div>
+          <p>每个项目都展示我如何在策略、创意、制作与商业目标之间建立连接。</p>
+          <button onClick={() => document.querySelector('.case-row')?.scrollIntoView({ behavior: 'smooth' })}>ALL PROJECTS <ArrowRight /></button>
+        </div>
+        <div className="case-list">
+          {cases.map(item => <button className="case-row" key={item.name} onClick={() => setSelected(item)}>
+            <span className="case-no">{item.no}</span>
+            <span><small>PROJECT</small><strong>{item.name}</strong></span>
+            <span><small>YEAR</small>{item.year}</span>
+            <div className="case-image"><img src={item.image} alt={item.name} loading="lazy" /><i>VIEW PROJECT</i></div>
+            <p>{item.desc}</p>
+            <div className="case-tags">{item.tags.map(tag => <em key={tag}>{tag}</em>)}</div>
+          </button>)}
+        </div>
+      </section>
 
-        <section className="play-section max" id="play">
-          <div className="section-label"><span>03</span> INTERACTIVE / LAB</div>
-          <div className="play-heading"><h2>Move.<br />Feel.<br /><em>Imagine.</em></h2><p>创意不是静态答案。<br />试着移动光标，与 Kiki 的数字分身产生连接。</p></div>
-          <MagneticOrb />
-        </section>
+      <section className="services grid-bg" id="services">
+        <div className="section-head">
+          <div><small>03 &nbsp; SERVICES</small><h2>What I Create.</h2></div>
+          <p>从第一张概念草图到量产与上线，建立兼具创意张力和落地能力的完整设计体验。</p>
+        </div>
+        <div className="skill-list">{skills.map(([no,title,desc]) => <article key={no}><span>{no}</span><h3>{title}</h3><p>{desc}</p><ArrowUpRight /></article>)}</div>
+      </section>
 
-        <section className="contact" id="contact">
-          <div className="max">
-            <div className="section-label light"><span>04</span> CONTACT / NEXT</div>
-            <p className="contact-kicker">HAVE A PROJECT IN MIND?</p>
-            <h2>Let’s make<br />something <em>alive.</em></h2>
-            <div className="contact-links">
-              <a href="mailto:1461760450@qq.com"><Mail /> <span>EMAIL</span><strong>1461760450@qq.com</strong><ArrowUpRight /></a>
-              <a href="tel:+8615700715232"><Phone /> <span>PHONE / WECHAT</span><strong>+86 157 0071 5232</strong><ArrowUpRight /></a>
-            </div>
-            <footer><a href="#top">kiki’s space</a><span>AI DESIGNER · GUANGZHOU</span><span>© 2026 ALL RIGHTS RESERVED</span></footer>
-          </div>
-        </section>
-      </main>
+      <section className="process" id="process">
+        <div className="section-head">
+          <div><small>04 &nbsp; PROCESS</small><h2>5 Steps to Launch.</h2></div>
+          <p>让过程保持简单透明：理解、定义、探索、落地、发布。</p>
+        </div>
+        <div className="process-grid">{process.map(([no,en,cn,text]) => <article key={no}><strong>{no}</strong><small>{en}</small><h3>{cn}</h3><p>{text}</p></article>)}</div>
+      </section>
 
-      {selected && <div className="modal" role="dialog" aria-modal="true" aria-label={selected.title}>
-        <button className="modal-close" onClick={() => setSelected(null)} aria-label="关闭"><X /></button>
-        <div className="modal-visual"><img src={selected.image} alt={selected.title} /></div>
-        <div className="modal-copy"><small>{selected.type}</small><h2>{selected.title}</h2><p>{selected.note}</p><span>完整项目内容将在下一版素材补充后展开。</span></div>
-      </div>}
-    </div>
-  )
+      <section className="contact" id="contact">
+        <small>05 &nbsp; CONTACT</small>
+        <h2>Ready to make<br />something <em>alive?</em></h2>
+        <div className="contact-row">
+          <div><span>EMAIL</span><a href="mailto:1461760450@qq.com">1461760450@qq.com <ArrowUpRight /></a></div>
+          <div><span>PHONE / WECHAT</span><a href="tel:+8615700715232">+86 157 0071 5232 <ArrowUpRight /></a></div>
+        </div>
+        <footer><a href="#top">KIKI’S SPACE</a><span>AI DESIGNER / VISUAL STRATEGIST</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
+      </section>
+    </main>
+
+    {selected && <div className="case-modal">
+      <button onClick={() => setSelected(null)}><X /></button>
+      <div className="modal-image"><img src={selected.image} alt={selected.name} /></div>
+      <div className="modal-info"><small>{selected.no} / {selected.year}</small><h2>{selected.name}</h2><p>{selected.desc}</p><div>{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div><em>完整案例将在下一轮素材整理后展开。</em></div>
+    </div>}
+  </div>
 }
