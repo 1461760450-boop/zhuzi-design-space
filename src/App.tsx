@@ -1,231 +1,146 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
-import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
+import { ArrowDownRight, ArrowUpRight, Mail, Menu, Phone, Sparkles, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 const works = [
-  {
-    no: '01', client: 'BRAND SYSTEM', title: 'Four Brands, One System', year: '2026',
-    image: asset('assets/bio.jpg'), type: 'BRAND / VISUAL SYSTEM',
-    text: '负责 4 个品牌与约 10 个产品系列的视觉建设与维护，让多品牌资产保持清晰、一致与可持续延展。',
-  },
-  {
-    no: '02', client: 'PACKAGING', title: 'From Concept to Shelf', year: '2025',
-    image: asset('assets/packaging/乐叔的茶方案3.jpg'), type: 'PACKAGING / COMMERCE',
-    text: '覆盖建模、效果图、刀模、材质、专色、UV、打样及印刷跟进，累计推动近 50 款包装进入量产。',
-  },
-  {
-    no: '03', client: 'GLOBAL CAMPAIGN', title: 'Across Markets', year: '2025',
-    image: asset('assets/poster.jpg'), type: 'CAMPAIGN / EXHIBITION',
-    text: '为国际展会、LinkedIn、YouTube 与 Facebook 建立统一的视觉传播体验。',
-  },
-  {
-    no: '04', client: 'B2B DIGITAL', title: 'Built for Growth', year: '2026',
-    image: asset('assets/details/美妆4.jpg'), type: 'WEB / GOOGLE ADS',
-    text: '独立统筹英文 B2B 网站从需求分析、服务商筛选、设计开发到上线运营的完整流程。',
-  },
+  { no: '01', type: 'BRAND / PACKAGING', title: 'Warm Ritual', note: '品牌包装与视觉系统', image: asset('assets/packaging/礼盒.jpg'), tone: 'light' },
+  { no: '02', type: 'EXHIBITION / KV', title: 'Beyond Cloud', note: '展会主视觉与空间延展', image: asset('assets/poster.jpg'), tone: 'dark' },
+  { no: '03', type: 'COMMERCE / DIGITAL', title: 'Future Beauty', note: '电商内容与数字营销', image: asset('assets/details/美妆4.jpg'), tone: 'light' },
+  { no: '04', type: 'IDENTITY / OBJECT', title: 'Tea, Reframed', note: '产品概念与商业化设计', image: asset('assets/packaging/乐叔的茶方案3.jpg'), tone: 'warm' },
 ]
 
-const capabilities = [
-  ['01', '品牌视觉系统', '品牌 VI、多产品线统一、规范制定与视觉资产管理。'],
-  ['02', '包装商业化', '从概念、建模、打样到量产落地与供应链协作。'],
-  ['03', '数字营销设计', 'B2B 官网、Google Ads、落地页与电商视觉。'],
-  ['04', '海外品牌传播', '国际展会、英文宣传片与海外社交媒体内容。'],
-]
-
-function Counter({ end, suffix = '' }: { end: number; suffix?: string }) {
-  const node = useRef<HTMLElement>(null)
-  const [value, setValue] = useState(0)
-  useEffect(() => {
-    const el = node.current
-    if (!el) return
-    const io = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      const started = performance.now()
-      const frame = (time: number) => {
-        const progress = Math.min((time - started) / 1000, 1)
-        setValue(Math.round(end * (1 - Math.pow(1 - progress, 3))))
-        if (progress < 1) requestAnimationFrame(frame)
-      }
-      requestAnimationFrame(frame)
-      io.disconnect()
-    }, { threshold: .4 })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [end])
-  return <strong ref={node}>{String(value).padStart(end < 10 ? 2 : 1, '0')}{suffix}</strong>
+function MagneticOrb() {
+  const ref = useRef<HTMLDivElement>(null)
+  const [point, setPoint] = useState({ x: 50, y: 50 })
+  const move = (event: PointerEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    setPoint({ x: ((event.clientX - rect.left) / rect.width) * 100, y: ((event.clientY - rect.top) / rect.height) * 100 })
+  }
+  return (
+    <div className="playground" ref={ref} onPointerMove={move} onPointerLeave={() => setPoint({ x: 50, y: 50 })}>
+      <div className="play-grid" />
+      <div className="orb-glow" style={{ left: `${point.x}%`, top: `${point.y}%` }} />
+      <div className="orb" style={{ left: `${point.x}%`, top: `${point.y}%` }}>
+        <span>KIKI</span><i>AI</i>
+      </div>
+      <p>移动光标<br />改变创意引力场</p>
+    </div>
+  )
 }
 
 export default function App() {
   const [menu, setMenu] = useState(false)
+  const [selected, setSelected] = useState<(typeof works)[number] | null>(null)
   const [time, setTime] = useState('')
 
   useEffect(() => {
-    const tick = () => setTime(new Intl.DateTimeFormat('en-GB', {
-      hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai',
-    }).format(new Date()))
+    const tick = () => setTime(new Intl.DateTimeFormat('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Shanghai' }).format(new Date()))
     tick()
     const timer = window.setInterval(tick, 30000)
     return () => window.clearInterval(timer)
   }, [])
 
   useEffect(() => {
-    document.body.style.overflow = menu ? 'hidden' : ''
+    document.body.style.overflow = selected || menu ? 'hidden' : ''
     return () => { document.body.style.overflow = '' }
-  }, [menu])
+  }, [selected, menu])
 
-  useEffect(() => {
-    const reveal = document.querySelectorAll('[data-reveal]')
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('shown')
-          observer.unobserve(entry.target)
-        }
-      })
-    }, { threshold: .12, rootMargin: '0px 0px -7% 0px' })
-    reveal.forEach(el => observer.observe(el))
+  const closeMenu = () => setMenu(false)
 
-    let raf = 0
-    const update = () => {
-      raf = 0
-      const max = Math.max(document.documentElement.scrollHeight - innerHeight, 1)
-      document.documentElement.style.setProperty('--page', `${scrollY / max * 100}%`)
-      document.documentElement.style.setProperty('--hero', `${Math.min(scrollY / innerHeight, 1)}`)
-    }
-    const scroll = () => { if (!raf) raf = requestAnimationFrame(update) }
-    update()
-    addEventListener('scroll', scroll, { passive: true })
-    return () => {
-      observer.disconnect()
-      removeEventListener('scroll', scroll)
-      if (raf) cancelAnimationFrame(raf)
-    }
-  }, [])
+  return (
+    <div className="site" id="top">
+      <header className="nav">
+        <a href="#top" className="logo" aria-label="kiki's space 首页">
+          <span className="logo-dot" />kiki’s space
+        </a>
+        <nav className={menu ? 'nav-links open' : 'nav-links'}>
+          <button className="mobile-close" onClick={closeMenu} aria-label="关闭菜单"><X /></button>
+          <a href="#about" onClick={closeMenu}>角色介绍 <small>01</small></a>
+          <a href="#works" onClick={closeMenu}>作品案例 <small>02</small></a>
+          <a href="#play" onClick={closeMenu}>互动体验 <small>03</small></a>
+          <a href="#contact" onClick={closeMenu}>联系方式 <small>04</small></a>
+        </nav>
+        <div className="nav-status"><span>CN · {time}</span><i />AVAILABLE</div>
+        <button className="mobile-menu" onClick={() => setMenu(true)} aria-label="打开菜单"><Menu /></button>
+      </header>
 
-  const pointer = (event: PointerEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect()
-    event.currentTarget.style.setProperty('--x', `${((event.clientX - rect.left) / rect.width - .5) * 2}`)
-    event.currentTarget.style.setProperty('--y', `${((event.clientY - rect.top) / rect.height - .5) * 2}`)
-  }
-
-  const reset = (event: PointerEvent<HTMLElement>) => {
-    event.currentTarget.style.setProperty('--x', '0')
-    event.currentTarget.style.setProperty('--y', '0')
-  }
-
-  return <div className="zhuzi" id="top">
-    <div className="page-progress" />
-    <header className="header">
-      <button onClick={() => setMenu(true)}><Menu /> MENU</button>
-      <a className="brand" href="#top"><i />竹子®</a>
-      <div className="local-time"><b>{time}</b><span>LOCAL TIME / CN</span></div>
-      <a className="start-project" href="#contact">START PROJECT <small>/ ZHUZI</small><ArrowRight /></a>
-    </header>
-
-    {menu && <nav className="overlay-menu">
-      <button onClick={() => setMenu(false)}><X /> CLOSE</button>
-      {[
-        ['01', '角色介绍', '#about'], ['02', '作品案例', '#work'],
-        ['03', '互动体验', '#experience'], ['04', '联系方式', '#contact'],
-      ].map(([no, label, href]) => <a href={href} key={no} onClick={() => setMenu(false)}>
-        <small>{no}</small><span>{label}</span><ArrowUpRight />
-      </a>)}
-    </nav>}
-
-    <main>
-      <section className="hero">
-        <video autoPlay muted loop playsInline poster={asset('assets/videos/hanza-flower-poster.png')}>
-          <source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" />
-        </video>
-        <div className="hero-shade" />
-        <div className="hero-statement">
-          <p>I TURN COMPLEX PRODUCTS<br />INTO CLEAR, LIVING VISUALS.</p>
-          <div><span>/01&nbsp; BRAND SYSTEM</span><span>/02&nbsp; PACKAGING</span><span>/03&nbsp; GLOBAL COMMUNICATION</span></div>
-        </div>
-        <p className="hero-role">VISUAL DESIGNER · GUANGZHOU</p>
-        <div className="hero-proof"><b>09+</b><span>YEARS OF<br />VISUAL PRACTICE</span></div>
-        <h1>竹子®</h1>
-      </section>
-
-      <section className="brand-strip">
-        {['BRAND SYSTEM', 'PACKAGING', 'B2B WEBSITE', 'GOOGLE ADS', 'GLOBAL EXPO', 'SOCIAL MEDIA', 'MOTION', 'AIGC'].map((item, i) =>
-          <span key={item}><i>{String(i + 1).padStart(2, '0')}</i>{item}</span>)}
-      </section>
-
-      <section className="about grid" id="about">
-        <aside className="profile-card" data-reveal>
-          <div className="portrait"><span>PORTRAIT</span><i>COMING SOON</i></div>
-          <a href="#contact">GET IN TOUCH <small>/ ZHUZI</small><ArrowRight /></a>
-          <div className="profile-meta">
-            <b>竹子 · 彭著娟 AMY</b>
-            <p><span>PROFESSION</span>VISUAL DESIGNER</p>
-            <p><span>LOCATION</span>GUANGZHOU, CHINA</p>
-          </div>
-        </aside>
-
-        <div className="about-content">
-          <div className="label"><i />01&nbsp;&nbsp; MY MISSION <span>©2017-2026</span></div>
-          <h2 data-reveal>你好，我是竹子。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
-          <div className="metrics" onPointerMove={pointer} onPointerLeave={reset}>
-            <div>
-              <article className="metric-accent"><small>01 / PACKAGES</small><Counter end={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></article>
-              <article><small>03 / EXPERIENCE</small><Counter end={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></article>
-            </div>
-            <div className="metric-right">
-              <article className="metric-accent"><small>02 / PRODUCT SERIES</small><Counter end={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
-              <article><small>04 / BRANDS</small><Counter end={6} /><p>参与建设与维护的品牌视觉系统。</p></article>
+      <main>
+        <section className="hero">
+          <video autoPlay muted loop playsInline preload="metadata" poster={asset('assets/poster.jpg')}>
+            <source src={asset('assets/videos/foldcraft-lab.mp4')} type="video/mp4" />
+          </video>
+          <div className="hero-shade" />
+          <div className="hero-copy max">
+            <div className="hero-kicker"><Sparkles /> AI DESIGNER · VISUAL STRATEGIST</div>
+            <h1><span>Ideas into</span><br /><em>living</em> visuals.</h1>
+            <div className="hero-foot">
+              <p>让想象不只停留在屏幕。<br />融合 AI、策略与视觉，创造有生命力的品牌体验。</p>
+              <a href="#works" className="round-link">VIEW WORKS <ArrowDownRight /></a>
             </div>
           </div>
-          <div className="work-lead" data-reveal><small><i />02&nbsp;&nbsp; PORTFOLIO</small><h3><span>CASE</span><br />STUDIES.</h3><p>STRATEGY, SYSTEM AND<br />COMMERCIAL DELIVERY.</p></div>
-        </div>
-      </section>
+          <div className="hero-index">PORTFOLIO · 2026</div>
+        </section>
 
-      <section className="work" id="work">
-        <div className="section-heading" data-reveal>
-          <div><small>02&nbsp;&nbsp; PORTFOLIO</small><h2>SELECTED<br />WORK.</h2></div>
-          <p>从品牌系统与包装量产，到 B2B 网站、数字营销和全球传播，设计最终要进入真实商业场景。</p>
-        </div>
-        <div className="work-list">
-          {works.map(work => <article key={work.no} data-reveal>
-            <span className="work-no">{work.no}</span>
-            <div className="work-name"><small>CLIENT / FIELD</small><h3>{work.title}</h3><p>{work.client}</p></div>
-            <div className="work-year"><small>YEAR</small><b>{work.year}</b></div>
-            <div className="work-image"><img src={work.image} alt={work.title} loading="lazy" /><i>VIEW PROJECT</i></div>
-            <div className="work-copy"><small>{work.type}</small><p>{work.text}</p></div>
-            <button aria-label={`查看 ${work.title}`}><ArrowUpRight /></button>
-          </article>)}
-        </div>
-      </section>
+        <section className="about max" id="about">
+          <div className="section-label"><span>01</span> ROLE / ABOUT</div>
+          <div className="about-grid">
+            <h2>I’m Kiki.<br />AI 设计师，<br /><span>也是视觉问题的解题者。</span></h2>
+            <div className="about-copy">
+              <p>拥有近 9 年品牌与视觉设计经验，从品牌系统、产品商业化到海外市场传播，我擅长把复杂需求转化为清晰、准确且富有情绪的视觉语言。</p>
+              <p>现在，我将 AIGC 融入完整的设计流程：更快探索，更深表达，也让每一个创意拥有新的生长方式。</p>
+              <div className="stats">
+                <div><strong>09</strong><span>YEARS<br />EXPERIENCE</span></div>
+                <div><strong>50+</strong><span>PACKAGES<br />LAUNCHED</span></div>
+                <div><strong>20+</strong><span>PRODUCT<br />SERIES</span></div>
+              </div>
+            </div>
+          </div>
+          <div className="capability-strip">
+            {['AIGC VISUAL', 'BRAND SYSTEM', 'PACKAGING', '3D & MOTION', 'GLOBAL CAMPAIGN'].map(x => <span key={x}>{x}<i>✦</i></span>)}
+          </div>
+        </section>
 
-      <section className="capabilities grid">
-        <div className="section-heading" data-reveal>
-          <div><small>03&nbsp;&nbsp; CAPABILITIES</small><h2>WHAT I<br />CREATE.</h2></div>
-          <p>将品牌策略、视觉表达、制作工艺与传播渠道连接成完整的设计结果。</p>
-        </div>
-        <div className="capability-list">
-          {capabilities.map(([no, name, text]) => <article key={no} data-reveal><span>{no}</span><h3>{name}</h3><p>{text}</p><ArrowUpRight /></article>)}
-        </div>
-      </section>
+        <section className="work-section" id="works">
+          <div className="max">
+            <div className="section-label light"><span>02</span> SELECTED WORKS</div>
+            <div className="works-title"><h2>Selected<br /><em>experiments.</em></h2><p>品牌、影像、海报与数字体验。<br />每个项目都是一次新的视觉实验。</p></div>
+            <div className="work-grid">
+              {works.map((work, index) => (
+                <button className={`work-card ${index % 3 === 0 ? 'wide' : ''}`} key={work.title} onClick={() => setSelected(work)}>
+                  <div className="work-image"><img src={work.image} alt={work.title} loading={index > 1 ? 'lazy' : 'eager'} /><span>VIEW CASE <ArrowUpRight /></span></div>
+                  <div className="work-meta"><small>{work.no} — {work.type}</small><h3>{work.title}</h3><p>{work.note}</p></div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
 
-      <section className="experience" id="experience" onPointerMove={pointer} onPointerLeave={reset}>
-        <div className="experience-copy" data-reveal><small>04&nbsp;&nbsp; INTERACTIVE EXPERIENCE</small><h2>MOVE.<br /><em>FEEL.</em><br />DISCOVER.</h2><p>移动鼠标，感受视觉元素在秩序与变化之间产生呼吸。后续这里会承载 AI 视觉实验、动态海报和交互作品。</p></div>
-        <div className="experience-stage">
-          <div className="ring ring-a" /><div className="ring ring-b" />
-          <div className="satellite s-one">BRAND</div><div className="satellite s-two">MOTION</div><div className="satellite s-three">AIGC</div>
-          <div className="core"><b>竹</b><span>MOVE YOUR CURSOR</span></div>
-        </div>
-      </section>
+        <section className="play-section max" id="play">
+          <div className="section-label"><span>03</span> INTERACTIVE / LAB</div>
+          <div className="play-heading"><h2>Move.<br />Feel.<br /><em>Imagine.</em></h2><p>创意不是静态答案。<br />试着移动光标，与 Kiki 的数字分身产生连接。</p></div>
+          <MagneticOrb />
+        </section>
 
-      <section className="contact" id="contact">
-        <small>05&nbsp;&nbsp; CONTACT</small>
-        <h2>LET’S MAKE<br />SOMETHING <em>ALIVE.</em></h2>
-        <div className="contact-links">
-          <a href="mailto:1461760450@qq.com"><span>EMAIL</span>1461760450@qq.com<ArrowUpRight /></a>
-          <a href="tel:+8615700715232"><span>PHONE / WECHAT</span>+86 157 0071 5232<ArrowUpRight /></a>
-        </div>
-        <footer><a href="#top">竹子®</a><span>VISUAL DESIGNER / BRAND & COMMUNICATION</span><span>©2026 ALL RIGHTS RESERVED</span></footer>
-      </section>
-    </main>
-  </div>
+        <section className="contact" id="contact">
+          <div className="max">
+            <div className="section-label light"><span>04</span> CONTACT / NEXT</div>
+            <p className="contact-kicker">HAVE A PROJECT IN MIND?</p>
+            <h2>Let’s make<br />something <em>alive.</em></h2>
+            <div className="contact-links">
+              <a href="mailto:1461760450@qq.com"><Mail /> <span>EMAIL</span><strong>1461760450@qq.com</strong><ArrowUpRight /></a>
+              <a href="tel:+8615700715232"><Phone /> <span>PHONE / WECHAT</span><strong>+86 157 0071 5232</strong><ArrowUpRight /></a>
+            </div>
+            <footer><a href="#top">kiki’s space</a><span>AI DESIGNER · GUANGZHOU</span><span>© 2026 ALL RIGHTS RESERVED</span></footer>
+          </div>
+        </section>
+      </main>
+
+      {selected && <div className="modal" role="dialog" aria-modal="true" aria-label={selected.title}>
+        <button className="modal-close" onClick={() => setSelected(null)} aria-label="关闭"><X /></button>
+        <div className="modal-visual"><img src={selected.image} alt={selected.title} /></div>
+        <div className="modal-copy"><small>{selected.type}</small><h2>{selected.title}</h2><p>{selected.note}</p><span>完整项目内容将在下一版素材补充后展开。</span></div>
+      </div>}
+    </div>
+  )
 }
