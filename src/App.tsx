@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
@@ -24,6 +24,51 @@ const process = [
   ['04', 'Craft', '视觉落地', '完成系统设计、动效、打样与跨媒介延展。'],
   ['05', 'Launch', '交付上线', '跟进制作与上线，并让设计在真实场景中持续生长。'],
 ]
+
+function MissionStatement() {
+  const ref = useRef<HTMLHeadingElement>(null)
+  const [active, setActive] = useState(0)
+  const phrases = ['你好，', '我是 Kiki。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
+  useEffect(() => {
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const rect = ref.current?.getBoundingClientRect()
+      if (!rect) return
+      const progress = Math.max(0, Math.min(1, (window.innerHeight * .78 - rect.top) / (window.innerHeight * .58)))
+      setActive(Math.ceil(progress * phrases.length))
+    }
+    const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { window.removeEventListener('scroll', onScroll); if (frame) cancelAnimationFrame(frame) }
+  }, [])
+  return <h2 className="mission-statement" ref={ref}>{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
+}
+
+function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
+  const ref = useRef<HTMLElement>(null)
+  const [display, setDisplay] = useState(0)
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return
+      const start = performance.now()
+      const duration = 1100
+      const tick = (now: number) => {
+        const progress = Math.min((now - start) / duration, 1)
+        setDisplay(Math.round(value * (1 - Math.pow(1 - progress, 3))))
+        if (progress < 1) requestAnimationFrame(tick)
+      }
+      requestAnimationFrame(tick)
+      observer.disconnect()
+    }, { threshold: .45 })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [value])
+  return <strong ref={ref}>{String(display).padStart(value < 10 ? 2 : 1, '0')}{suffix}</strong>
+}
 
 export default function App() {
   const [menu, setMenu] = useState(false)
@@ -121,12 +166,12 @@ export default function App() {
         </div>
         <div className="mission-copy">
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
-          <h2>你好，我是 Kiki。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
+          <MissionStatement />
           <div className="metric-grid">
-            <article><small>01 / PACKAGES</small><strong>50+</strong><p>完成并推动进入市场的量产包装。</p></article>
-            <article><small>02 / PRODUCT SERIES</small><strong>20+</strong><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
-            <article><small>03 / EXPERIENCE</small><strong>09+</strong><p>品牌、包装、数字营销与海外传播经验。</p></article>
-            <article><small>04 / BRANDS</small><strong>06</strong><p>参与建设与维护的品牌视觉系统。</p></article>
+            <article><small>01 / PACKAGES</small><CountUp value={50} suffix="+" /><p>完成并推动进入市场的量产包装。</p></article>
+            <article><small>02 / PRODUCT SERIES</small><CountUp value={20} suffix="+" /><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
+            <article><small>03 / EXPERIENCE</small><CountUp value={9} suffix="+" /><p>品牌、包装、数字营销与海外传播经验。</p></article>
+            <article><small>04 / BRANDS</small><CountUp value={6} /><p>参与建设与维护的品牌视觉系统。</p></article>
           </div>
           <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
         </div>
