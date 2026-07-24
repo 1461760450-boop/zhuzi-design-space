@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
+import archiveData from './archive.generated.json'
 
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
@@ -10,22 +11,11 @@ const cases = [
   { no: '04', name: 'Found Fair Digital Growth', year: '2026', image: asset('assets/web-brand.jpg'), desc: '围绕宠物用品海外获客，完成英文 B2B 网站、产品视觉与 Google Ads 素材协同，连接品牌表达、产品信息与询盘转化。', tags: ['B2B Website', 'Digital Marketing'] },
 ]
 
-const archiveFilters = ['全部', '包装', '画册', '详情页', '展会活动', 'Logo', 'PPT'] as const
-
-const archiveWorks = [
-  { title: 'TRÀII 新年礼盒', category: '包装', image: asset('assets/pack-gift.jpg') },
-  { title: '乐叔的茶方案 3', category: '包装', image: asset('assets/packaging/乐叔的茶方案3.jpg') },
-  { title: '偻里奶茶杯 2', category: '包装', image: asset('assets/packaging/偻里奶茶杯2.jpg') },
-  { title: 'FOTANIKAL 品牌标志', category: 'Logo', image: asset('assets/logo/7.jpg') },
-  { title: '美妆产品详情', category: '详情页', image: asset('assets/details/美妆.jpg') },
-  { title: '美妆视觉系列 2', category: '详情页', image: asset('assets/details/美妆2.jpg') },
-  { title: '美妆视觉系列 4', category: '详情页', image: asset('assets/details/美妆4.jpg') },
-  { title: '美妆品牌首页', category: '详情页', image: asset('assets/details/美妆首页.jpg') },
-  { title: '球类产品详情', category: '详情页', image: asset('assets/details/1.球类详情.jpg') },
-  { title: '汽车产品画册', category: '画册', image: asset('assets/brochure/汽车画册.jpg') },
-  { title: '海外展会视觉', category: '展会活动', image: asset('assets/exhibition.jpg') },
-  { title: '品牌提案演示', category: 'PPT', image: asset('assets/canberra.jpg') },
-]
+type ArchiveWork = { id: string, title: string, category: string, type: string, image: string, group: string }
+const archiveWorks = archiveData as ArchiveWork[]
+const archiveFilters = ['全部', '包装', '画册', '详情页', '网站', '展会', '活动', '宣传dm', 'logo', 'ppt'] as const
+const archiveLabels: Record<string, string> = { 宣传dm: '宣传 DM', logo: 'Logo', ppt: 'PPT' }
+const archiveLabel = (category: string) => archiveLabels[category] || category
 
 const skills = [
   ['01', 'AI Visual Creation', '使用 AIGC 完成概念探索、视觉生成与内容迭代，让创意拥有更宽的可能性。'],
@@ -221,16 +211,22 @@ export default function App() {
         </div>
 
         <div className="archive">
-          <div className="archive-heading"><span>COMPLETE ARCHIVE</span><h3>完整作品档案</h3></div>
+          <div className="archive-heading">
+            <span>COMPLETE ARCHIVE</span>
+            <h3>完整作品档案</h3>
+            <strong className="archive-total">{archiveWorks.length} PROJECTS</strong>
+          </div>
           <nav className="archive-filters" aria-label="作品分类">
-            {archiveFilters.map(filter => <button className={activeArchiveFilter === filter ? 'active' : ''} key={filter} onClick={() => setActiveArchiveFilter(filter)}>{filter}</button>)}
+            {archiveFilters.map(filter => <button className={activeArchiveFilter === filter ? 'active' : ''} key={filter} onClick={() => setActiveArchiveFilter(filter)}>
+              {archiveLabel(filter)} <small>{filter === '全部' ? archiveWorks.length : archiveWorks.filter(item => item.category === filter).length}</small>
+            </button>)}
           </nav>
           <div className="archive-grid">
-            {visibleArchiveWorks.map((item, index) => <button className="archive-card" key={item.title} onClick={() => setArchiveSelected(item)}>
-              <img src={item.image} alt={item.title} loading="lazy" />
-              <span className="archive-type">{item.category === 'Logo' ? 'LOGO' : 'IMAGE'}</span>
+            {visibleArchiveWorks.map((item, index) => <button className="archive-card" key={item.id} onClick={() => setArchiveSelected(item)}>
+              <img src={asset(item.image)} alt={item.title} loading="lazy" />
+              <span className="archive-type">{item.type}</span>
               <ArrowUpRight />
-              <div className="archive-caption"><small>{item.category} / IMAGE</small><strong>{item.title}</strong><em>{String(index + 1).padStart(2, '0')}</em></div>
+              <div className="archive-caption"><small>{archiveLabel(item.category)} / {item.type}</small><strong>{item.title}</strong><em>{String(index + 1).padStart(2, '0')}</em></div>
             </button>)}
           </div>
         </div>
@@ -270,8 +266,8 @@ export default function App() {
     </div>}
     {archiveSelected && <div className="archive-modal" onClick={() => setArchiveSelected(null)}>
       <button aria-label="关闭作品预览" onClick={() => setArchiveSelected(null)}><X /></button>
-      <img src={archiveSelected.image} alt={archiveSelected.title} onClick={event => event.stopPropagation()} />
-      <div><small>{archiveSelected.category}</small><strong>{archiveSelected.title}</strong></div>
+      <img src={asset(archiveSelected.image)} alt={archiveSelected.title} onClick={event => event.stopPropagation()} />
+      <div><small>{archiveLabel(archiveSelected.category)} / {archiveSelected.type}</small><strong>{archiveSelected.title}</strong></div>
     </div>}
   </div>
 }
