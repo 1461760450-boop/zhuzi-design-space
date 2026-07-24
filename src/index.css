@@ -55,3 +55,32 @@
   .scroll-reveal,.scroll-reveal.in-view,.section-head.scroll-reveal h2,.case-row.scroll-reveal{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
   .scroll-progress{display:none}
 }
+
+/* Mission section — reference four-column editorial layout */
+.expertise-strip{height:82px;display:grid;grid-template-columns:repeat(8,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#f5f4f1;overflow:hidden}
+.expertise-strip span{display:flex;align-items:center;justify-content:center;gap:8px;border-right:1px solid var(--line);font-size:9px;font-weight:600;white-space:nowrap}
+.expertise-strip b{font-size:7px;color:var(--red);font-weight:500}
+.mission{grid-template-columns:repeat(4,1fr);align-items:start;min-height:1750px;position:relative}
+.profile-card{grid-column:1;margin:70px 0 70px 4vw;position:sticky;top:22px;align-self:start}
+.profile-art.profile-placeholder{height:390px;background:#d9d6cf;display:flex;align-items:center;justify-content:center}
+.profile-art.profile-placeholder:before,.profile-art.profile-placeholder:after{display:none}
+.profile-art.profile-placeholder span{font-size:10px;letter-spacing:.18em;color:#aaa6a0}
+.profile-art.profile-placeholder i{font-size:8px;color:#aaa6a0}
+.mission-copy{grid-column:3/5;padding:70px 4vw 100px 0}
+.mission-copy h2{font-size:clamp(45px,4.7vw,80px);margin:65px 0 85px}
+.metric-grid article{min-height:310px;padding:26px 30px 45px;border-top:3px solid var(--red)}
+.metric-grid article:nth-child(even){padding-left:30px}
+.metric-grid article:nth-child(2){margin-top:70px}
+.metric-grid article:nth-child(3){margin-top:-70px}
+.metric-grid strong{font-size:68px;margin:65px 0 8px}
+.mission-next{width:50%;margin-top:110px;padding-top:25px;border-top:1px solid var(--line)}
+.mission-next small{font-size:8px;letter-spacing:.1em}.mission-next small i{width:6px;height:6px;background:var(--red);display:inline-block;margin-right:8px}
+.mission-next strong{display:block;font-size:76px;line-height:.7;letter-spacing:-.065em;margin:65px 0 50px}
+.mission-next p{font-size:10px;line-height:1.25}
+
+@media(max-width:900px){
+  .expertise-strip{height:65px;grid-template-columns:repeat(4,1fr)}.expertise-strip span:nth-child(n+5){display:none}
+  .mission{display:block;min-height:0}.profile-card{position:relative;top:auto;margin:60px 18px}.profile-art.profile-placeholder{height:430px}
+  .mission-copy{padding:30px 18px 80px}.metric-grid article{min-height:250px;padding:22px 12px}.metric-grid article:nth-child(2),.metric-grid article:nth-child(3){margin-top:0}
+  .metric-grid strong{font-size:48px;margin-top:45px}.mission-next{width:100%;margin-top:75px}.mission-next strong{font-size:62px}
+}

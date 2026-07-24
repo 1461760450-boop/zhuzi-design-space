@@ -109,9 +109,13 @@ export default function App() {
         <h1 className="hero-brand">KIKI’S<br />SPACE</h1>
       </section>
 
+      <div className="expertise-strip" aria-label="核心能力">
+        {['BRAND SYSTEM', 'PACKAGING', 'AIGC', 'B2B WEBSITE', 'GLOBAL EXPO', 'E-COMMERCE', 'MOTION', '3D VISUAL'].map((item, index) => <span key={item}><b>{String(index + 1).padStart(2, '0')}</b>{item}</span>)}
+      </div>
+
       <section className="mission grid-bg" id="about">
         <div className="profile-card">
-          <div className="profile-art"><span>K</span><i>AI DESIGNER</i></div>
+          <div className="profile-art profile-placeholder"><span>PORTRAIT</span><i>COMING SOON</i></div>
           <a href="#contact">GET IN TOUCH <b>/KIKI</b><ArrowRight /></a>
           <div className="profile-meta"><strong>KIKI · AMY PENG</strong><p><span>PROFESSION</span>AI & VISUAL DESIGNER</p><p><span>LOCATION</span>GUANGZHOU, CHINA</p></div>
         </div>
@@ -119,11 +123,12 @@ export default function App() {
           <div className="mini-title"><i /> 01 &nbsp; MY MISSION <span>©2017—2026</span></div>
           <h2>你好，我是 Kiki。我帮助品牌把复杂的产品与想法，转化为<span>清晰、准确、有温度的视觉系统。</span></h2>
           <div className="metric-grid">
-            <article><small>01 / EXPERIENCE</small><strong>09+</strong><p>年品牌、包装与视觉设计经验。</p></article>
-            <article><small>02 / PACKAGES</small><strong>50+</strong><p>完成并进入市场的量产包装。</p></article>
-            <article><small>03 / SERIES</small><strong>20+</strong><p>跨鞋垫、护具、宠物与消费品系列。</p></article>
-            <article><small>04 / BRANDS</small><strong>06</strong><p>持续服务的品牌视觉与商业系统。</p></article>
+            <article><small>01 / PACKAGES</small><strong>50+</strong><p>完成并推动进入市场的量产包装。</p></article>
+            <article><small>02 / PRODUCT SERIES</small><strong>20+</strong><p>覆盖鞋垫、护具、宠物与消费品系列。</p></article>
+            <article><small>03 / EXPERIENCE</small><strong>09+</strong><p>品牌、包装、数字营销与海外传播经验。</p></article>
+            <article><small>04 / BRANDS</small><strong>06</strong><p>参与建设与维护的品牌视觉系统。</p></article>
           </div>
+          <div className="mission-next"><small><i /> 02 &nbsp; PORTFOLIO</small><strong>CASE<br />STUDIES.</strong><p>STRATEGY, VISUAL SYSTEMS<br />AND COMMERCIAL DELIVERY.</p></div>
         </div>
       </section>
 
