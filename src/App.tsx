@@ -26,16 +26,17 @@ const process = [
 ]
 
 function MissionStatement() {
-  const ref = useRef<HTMLHeadingElement>(null)
+  const stageRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const phrases = ['你好，', '我是 Kiki。', '我帮助品牌', '把复杂的', '产品与想法，', '转化为', '清晰、', '准确、', '有温度的', '视觉系统。']
   useEffect(() => {
     let frame = 0
     const update = () => {
       frame = 0
-      const rect = ref.current?.getBoundingClientRect()
+      const rect = stageRef.current?.getBoundingClientRect()
       if (!rect) return
-      const progress = Math.max(0, Math.min(1, (window.innerHeight * .78 - rect.top) / (window.innerHeight * .58)))
+      const travel = Math.max(rect.height - window.innerHeight, 1)
+      const progress = Math.max(0, Math.min(1, (window.innerHeight * .16 - rect.top) / travel))
       setActive(Math.ceil(progress * phrases.length))
     }
     const onScroll = () => { if (!frame) frame = requestAnimationFrame(update) }
@@ -43,7 +44,9 @@ function MissionStatement() {
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => { window.removeEventListener('scroll', onScroll); if (frame) cancelAnimationFrame(frame) }
   }, [])
-  return <h2 className="mission-statement" ref={ref}>{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
+  return <div className="mission-statement-stage" ref={stageRef}>
+    <h2 className="mission-statement">{phrases.map((phrase, index) => <span className={index < active ? 'lit' : ''} key={phrase}>{phrase}</span>)}</h2>
+  </div>
 }
 
 function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
@@ -89,7 +92,7 @@ export default function App() {
 
   useEffect(() => {
     const root = document.documentElement
-    const animated = document.querySelectorAll('.section-head, .profile-card, .mission-copy, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
+    const animated = document.querySelectorAll('.section-head, .profile-card, .metric-grid article, .case-row, .skill-list article, .process-grid article, .contact-row')
     animated.forEach((element, index) => {
       element.classList.add('scroll-reveal')
       ;(element as HTMLElement).style.setProperty('--reveal-delay', `${Math.min(index % 5, 4) * 65}ms`)
