@@ -65,7 +65,7 @@ export default function App() {
           </div>
         </div>
         <div className="intro-feature">
-          <video autoPlay muted loop playsInline poster={asset('assets/poster.jpg')}><source src={asset('assets/videos/foldcraft-lab.mp4')} type="video/mp4" /></video>
+          <video autoPlay muted loop playsInline preload="auto" poster={asset('assets/videos/hanza-flower-poster.png')}><source src={asset('assets/videos/hanza-flower.mp4')} type="video/mp4" /></video>
           <div className="video-tag">AI × DESIGN × MOTION</div>
         </div>
         <div className="trust">
