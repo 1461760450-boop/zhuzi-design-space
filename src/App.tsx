@@ -5,7 +5,7 @@ import archiveData from './archive.generated.json'
 const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 
 const cases = [
-  { no: '01', name: 'Bio Foam 3.0', year: '2024', image: asset('assets/bio.jpg'), desc: '围绕环保材料与全天候舒适卖点，重构 Dr. Scholl’s Bio Foam 鞋垫包装的信息层级、结构展示与海外货架识别。', tags: ['Packaging System', 'Commercialization'] },
+  { no: '01', name: 'MS.DORYA Body Wipe', year: '2026', image: asset('assets/cases/ms-dorya/packaging-hero.png'), desc: '为身体清洁湿巾建立兼具清爽感、功能识别与货架冲击力的包装视觉，让产品卖点在第一眼被准确理解。', tags: ['Packaging', 'Visual Identity'] },
   { no: '02', name: 'TRÀII Golf Series', year: '2024', image: asset('assets/pack-gift.jpg'), desc: '从高尔夫鞋垫产品定位出发，统一礼盒结构、视觉语言、功能图标与双语信息，形成可量产的系列包装方案。', tags: ['Product Series', 'Packaging'] },
   { no: '03', name: 'FOTANIKAL Global Expo', year: '2025', image: asset('assets/booth.jpg'), desc: '为海外宠物展建立主视觉与传播物料体系，覆盖展板、产品信息、现场物料和社交媒体内容，保持跨场景表达一致。', tags: ['Global Campaign', 'Exhibition'] },
   { no: '04', name: 'Found Fair Digital Growth', year: '2026', image: asset('assets/web-brand.jpg'), desc: '围绕宠物用品海外获客，完成英文 B2B 网站、产品视觉与 Google Ads 素材协同，连接品牌表达、产品信息与询盘转化。', tags: ['B2B Website', 'Digital Marketing'] },
@@ -75,6 +75,51 @@ function CountUp({ value, suffix = '' }: { value: number, suffix?: string }) {
     return () => observer.disconnect()
   }, [value])
   return <strong ref={ref}>{String(display).padStart(value < 10 ? 2 : 1, '0')}{suffix}</strong>
+}
+
+function BodyWipeCase({ onClose }: { onClose: () => void }) {
+  return <div className="project-case" role="dialog" aria-modal="true" aria-label="MS.DORYA Body Wipe 项目案例">
+    <button className="project-case-close" aria-label="关闭项目案例" onClick={onClose}><X /></button>
+    <header className="project-case-hero">
+      <div className="project-case-nav"><span>ZHUZI’S SPACE</span><span>CASE STUDY · 01</span></div>
+      <div className="project-case-title"><p>PACKAGING DESIGN / 2026</p><h2>BODY<br/><em>WIPE.</em></h2></div>
+      <img src={asset('assets/cases/ms-dorya/packaging-hero.png')} alt="MS.DORYA 身体清洁湿巾包装正面与开启结构" />
+      <div className="project-case-scroll">SCROLL TO EXPLORE <ArrowRight /></div>
+    </header>
+
+    <section className="project-case-intro">
+      <div><small>01 / PROJECT INTRODUCTION</small><h3>把清洁力，变成<br/>一眼可感知的清爽。</h3></div>
+      <div className="project-case-copy">
+        <p>MS.DORYA BODY WIPE 是一款为运动、旅行与日常即时清洁设计的身体湿巾。项目需要在有限的包装表面中，同时传达“双面材质、免冲洗、无酒精”三项核心卖点，并建立足够鲜明的货架识别。</p>
+        <p>设计以高明度荧光绿作为能量信号，搭配青绿色植物形态与大面积白色留白，在功能感和轻盈感之间取得平衡。视觉节奏从正面延伸至侧面、顶部与背面，让每个接触面都属于同一套品牌语言。</p>
+        <dl><div><dt>CLIENT</dt><dd>MS.DORYA</dd></div><div><dt>SCOPE</dt><dd>PACKAGING / VISUAL SYSTEM</dd></div><div><dt>PRODUCT</dt><dd>ALOE VERA BODY WIPE · 20 COUNT</dd></div></dl>
+      </div>
+    </section>
+
+    <section className="project-case-statement">
+      <small>02 / DESIGN CONCEPT</small>
+      <p>FRESHNESS<br/>IN <em>MOTION</em></p>
+      <span>将芦荟的天然感转译为流动、舒展的抽象图形。图形穿越包装折面，在不同观看角度中保持连续，也让静态纸盒拥有运动中的生命力。</span>
+    </section>
+
+    <section className="project-case-visual">
+      <div className="project-case-visual-copy"><small>03 / VISUAL LANGUAGE</small><h3>高能量色彩，<br/>清晰的信息层级。</h3><p>黑色粗体产品名承担远距离识别；荧光绿聚焦顶部与核心信息；青绿色植物图形提供天然联想。功能图标、容量与使用说明则以克制的网格组织，保证不同面向都能快速阅读。</p></div>
+      <img src={asset('assets/cases/ms-dorya/packaging-structure.png')} alt="包装顶部、侧面与底部结构细节" loading="lazy" />
+    </section>
+
+    <section className="project-case-features">
+      <article><span>01</span><strong>DUAL-TEXTURE</strong><p>双面材质在主标题下直接呈现，让差异化卖点进入第一阅读层级。</p></article>
+      <article><span>02</span><strong>RINSE FREE</strong><p>免冲洗的便捷体验被简化为短句，适应海外零售语境下的快速决策。</p></article>
+      <article><span>03</span><strong>ALCOHOL FREE</strong><p>以清晰、克制的功能信息，强化产品温和清洁的使用感知。</p></article>
+    </section>
+
+    <section className="project-case-back">
+      <img src={asset('assets/cases/ms-dorya/packaging-back.png')} alt="包装背面的使用说明与信息布局" loading="lazy" />
+      <div><small>04 / INFORMATION DESIGN</small><h3>从吸引注意，<br/>到建立信任。</h3><p>背面将成分、使用方式、注意事项与联系信息重新分层。标题与正文形成明确的阅读路径，侧边功能图标则延续正面的识别系统，让品牌表达在信息密集区域依然保持秩序。</p></div>
+    </section>
+
+    <footer className="project-case-footer"><small>MS.DORYA · BODY WIPE · 2026</small><h3>Clean design.<br/><em>Fresh impact.</em></h3><button onClick={onClose}>BACK TO PROJECTS <ArrowRight /></button></footer>
+  </div>
 }
 
 export default function App() {
@@ -259,7 +304,8 @@ export default function App() {
       </section>
     </main>
 
-    {selected && <div className="case-modal">
+    {selected?.no === '01' && <BodyWipeCase onClose={() => setSelected(null)} />}
+    {selected && selected.no !== '01' && <div className="case-modal">
       <button onClick={() => setSelected(null)}><X /></button>
       <div className="modal-image"><img src={selected.image} alt={selected.name} /></div>
       <div className="modal-info"><small>{selected.no} / {selected.year}</small><h2>{selected.name}</h2><p>{selected.desc}</p><div>{selected.tags.map(tag => <span key={tag}>{tag}</span>)}</div><em>完整案例将在下一轮素材整理后展开。</em></div>
