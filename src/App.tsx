@@ -7,12 +7,10 @@ const asset = (path: string) => `${import.meta.env.BASE_URL}${path}`
 const cases = [
   { no: '01', name: 'MS.DORYA Body Wipe', year: '2026', image: asset('assets/cases/ms-dorya/packaging-hero.png'), desc: '为身体清洁湿巾建立兼具清爽感、功能识别与货架冲击力的包装视觉，让产品卖点在第一眼被准确理解。', tags: ['Packaging', 'Visual Identity'] },
   { no: '02', name: 'TRÀII Golf Series', year: '2024', image: asset('assets/pack-gift.jpg'), desc: '从高尔夫鞋垫产品定位出发，统一礼盒结构、视觉语言、功能图标与双语信息，形成可量产的系列包装方案。', tags: ['Product Series', 'Packaging'] },
-  { no: '03', name: 'FOTANIKAL Global Expo', year: '2025', image: asset('assets/booth.jpg'), desc: '为海外宠物展建立主视觉与传播物料体系，覆盖展板、产品信息、现场物料和社交媒体内容，保持跨场景表达一致。', tags: ['Global Campaign', 'Exhibition'] },
-  { no: '04', name: 'Found Fair Digital Growth', year: '2026', image: asset('assets/web-brand.jpg'), desc: '围绕宠物用品海外获客，完成英文 B2B 网站、产品视觉与 Google Ads 素材协同，连接品牌表达、产品信息与询盘转化。', tags: ['B2B Website', 'Digital Marketing'] },
 ]
 
 type ArchiveWork = { id: string, title: string, category: string, type: string, image: string, group: string }
-const archiveWorks = archiveData as ArchiveWork[]
+const archiveWorks = (archiveData as ArchiveWork[]).slice(0, 2)
 const archiveFilters = ['全部', '包装', '画册', '详情页', '网站', '展会', '活动', '宣传dm', 'logo', 'ppt'] as const
 const archiveLabels: Record<string, string> = { 宣传dm: '宣传 DM', logo: 'Logo', ppt: 'PPT' }
 const archiveLabel = (category: string) => archiveLabels[category] || category
