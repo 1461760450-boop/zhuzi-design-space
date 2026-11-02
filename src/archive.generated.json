@@ -4,80 +4,120 @@
     "title": "3c包装3",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/001.webp",
-    "group": ""
+    "image": "assets/archive/packaging-001.png",
+    "group": "",
+    "document": "assets/archive/packaging-001.pdf",
+    "pages": [
+      "assets/archive/hd-content-001-1.jpg"
+    ]
   },
   {
     "id": "002",
     "title": "1湿纸巾包装1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/002.webp",
-    "group": ""
+    "image": "assets/archive/packaging-002.png",
+    "group": "",
+    "document": "assets/archive/packaging-002.pdf",
+    "pages": [
+      "assets/archive/hd-content-002-1.jpg"
+    ]
   },
   {
     "id": "003",
     "title": "2湿纸巾包装2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/003.webp",
-    "group": ""
+    "image": "assets/archive/packaging-003.png",
+    "group": "",
+    "document": "assets/archive/packaging-003.pdf",
+    "pages": [
+      "assets/archive/hd-content-003-1.jpg"
+    ]
   },
   {
     "id": "004",
     "title": "3c包装",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/004.webp",
-    "group": ""
+    "image": "assets/archive/packaging-004.png",
+    "group": "",
+    "document": "assets/archive/packaging-004.pdf",
+    "pages": [
+      "assets/archive/hd-content-004-1.jpg"
+    ]
   },
   {
     "id": "005",
     "title": "3c包装2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/005.webp",
-    "group": ""
+    "image": "assets/archive/packaging-005.png",
+    "group": "",
+    "document": "assets/archive/packaging-005.pdf",
+    "pages": [
+      "assets/archive/hd-content-005-1.jpg"
+    ]
   },
   {
     "id": "006",
     "title": "TEASINO奶茶",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/006.webp",
-    "group": ""
+    "image": "assets/archive/packaging-006.png",
+    "group": "",
+    "document": "assets/archive/packaging-006.pdf",
+    "pages": [
+      "assets/archive/hd-content-006-1.jpg"
+    ]
   },
   {
     "id": "007",
     "title": "TEASINO奶茶2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/007.webp",
-    "group": ""
+    "image": "assets/archive/packaging-007.png",
+    "group": "",
+    "document": "assets/archive/packaging-007.pdf",
+    "pages": [
+      "assets/archive/hd-content-007-1.jpg"
+    ]
   },
   {
     "id": "008",
     "title": "乐叔的茶方案1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/008.webp",
-    "group": ""
+    "image": "assets/archive/packaging-008.png",
+    "group": "",
+    "document": "assets/archive/packaging-008.pdf",
+    "pages": [
+      "assets/archive/hd-content-008-1.jpg"
+    ]
   },
   {
     "id": "009",
     "title": "乐叔的茶方案2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/009.webp",
-    "group": ""
+    "image": "assets/archive/packaging-009.png",
+    "group": "",
+    "document": "assets/archive/packaging-009.pdf",
+    "pages": [
+      "assets/archive/hd-content-009-1.jpg"
+    ]
   },
   {
     "id": "010",
     "title": "偻里奶茶杯1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/010.webp",
-    "group": ""
+    "image": "assets/archive/packaging-010.png",
+    "group": "",
+    "document": "assets/archive/packaging-010.pdf",
+    "pages": [
+      "assets/archive/hd-content-010-1.jpg"
+    ]
   },
   {
     "id": "011",
@@ -85,15 +125,28 @@
     "category": "包装",
     "type": "PDF",
     "image": "assets/archive/011.webp",
-    "group": ""
+    "group": "",
+    "document": "assets/archive/packaging-011.pdf",
+    "pages": [
+      "assets/archive/hd-content-011-1.jpg",
+      "assets/archive/hd-content-011-2.jpg",
+      "assets/archive/hd-content-011-3.jpg",
+      "assets/archive/hd-content-011-4.jpg"
+    ]
   },
   {
     "id": "012",
     "title": "棉棒包装1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/012.webp",
-    "group": ""
+    "image": "assets/archive/hd-content-012-3.jpg",
+    "group": "",
+    "document": "assets/archive/packaging-012.pdf",
+    "pages": [
+      "assets/archive/hd-content-012-1.jpg",
+      "assets/archive/hd-content-012-2.jpg",
+      "assets/archive/hd-content-012-3.jpg"
+    ]
   },
   {
     "id": "013",
@@ -101,7 +154,12 @@
     "category": "包装",
     "type": "PDF",
     "image": "assets/archive/013.webp",
-    "group": ""
+    "group": "",
+    "document": "assets/archive/packaging-013.pdf",
+    "pages": [
+      "assets/archive/hd-content-013-1.jpg",
+      "assets/archive/hd-content-013-2.jpg"
+    ]
   },
   {
     "id": "014",
@@ -109,23 +167,38 @@
     "category": "包装",
     "type": "PDF",
     "image": "assets/archive/014.webp",
-    "group": ""
+    "group": "",
+    "document": "assets/archive/packaging-014.pdf",
+    "pages": [
+      "assets/archive/hd-content-014-1.jpg",
+      "assets/archive/hd-content-014-2.jpg",
+      "assets/archive/hd-content-014-3.jpg",
+      "assets/archive/hd-content-014-4.jpg"
+    ]
   },
   {
     "id": "015",
     "title": "焦枣白茶杯方案1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/015.webp",
-    "group": ""
+    "image": "assets/archive/packaging-015.png",
+    "group": "",
+    "document": "assets/archive/packaging-015.pdf",
+    "pages": [
+      "assets/archive/hd-content-015-1.jpg"
+    ]
   },
   {
     "id": "016",
     "title": "焦枣白茶杯方案2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/016.webp",
-    "group": ""
+    "image": "assets/archive/packaging-016.png",
+    "group": "",
+    "document": "assets/archive/packaging-016.pdf",
+    "pages": [
+      "assets/archive/hd-content-016-1.jpg"
+    ]
   },
   {
     "id": "017",
@@ -133,7 +206,14 @@
     "category": "包装",
     "type": "PDF",
     "image": "assets/archive/017.webp",
-    "group": ""
+    "group": "",
+    "document": "assets/archive/packaging-017.pdf",
+    "pages": [
+      "assets/archive/hd-content-017-1.jpg",
+      "assets/archive/hd-content-017-2.jpg",
+      "assets/archive/hd-content-017-3.jpg",
+      "assets/archive/hd-content-017-4.jpg"
+    ]
   },
   {
     "id": "018",
@@ -141,7 +221,14 @@
     "category": "包装",
     "type": "PDF",
     "image": "assets/archive/018.webp",
-    "group": ""
+    "group": "",
+    "document": "assets/archive/packaging-018.pdf",
+    "pages": [
+      "assets/archive/hd-content-018-1.jpg",
+      "assets/archive/hd-content-018-2.jpg",
+      "assets/archive/hd-content-018-3.jpg",
+      "assets/archive/hd-content-018-4.jpg"
+    ]
   },
   {
     "id": "019",
@@ -149,15 +236,21 @@
     "category": "包装",
     "type": "IMAGE",
     "image": "assets/archive/019.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/content-019.jpg"
+    ]
   },
   {
     "id": "020",
     "title": "偻里奶茶杯2",
     "category": "包装",
     "type": "IMAGE",
-    "image": "assets/archive/020.webp",
-    "group": ""
+    "image": "assets/archive/packaging-020.png",
+    "group": "",
+    "pages": [
+      "assets/archive/content-020.jpg"
+    ]
   },
   {
     "id": "021",
@@ -165,7 +258,10 @@
     "category": "包装",
     "type": "IMAGE",
     "image": "assets/archive/021.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/content-021.png"
+    ]
   },
   {
     "id": "022",
@@ -173,7 +269,53 @@
     "category": "画册",
     "type": "PDF",
     "image": "assets/archive/022.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-022-01.jpg",
+      "assets/archive/hd-content-022-02.jpg",
+      "assets/archive/hd-content-022-03.jpg",
+      "assets/archive/hd-content-022-04.jpg",
+      "assets/archive/hd-content-022-05.jpg",
+      "assets/archive/hd-content-022-06.jpg",
+      "assets/archive/hd-content-022-07.jpg",
+      "assets/archive/hd-content-022-08.jpg",
+      "assets/archive/hd-content-022-09.jpg",
+      "assets/archive/hd-content-022-10.jpg",
+      "assets/archive/hd-content-022-11.jpg",
+      "assets/archive/hd-content-022-12.jpg",
+      "assets/archive/hd-content-022-13.jpg",
+      "assets/archive/hd-content-022-14.jpg",
+      "assets/archive/hd-content-022-15.jpg",
+      "assets/archive/hd-content-022-16.jpg",
+      "assets/archive/hd-content-022-17.jpg",
+      "assets/archive/hd-content-022-18.jpg",
+      "assets/archive/hd-content-022-19.jpg",
+      "assets/archive/hd-content-022-20.jpg",
+      "assets/archive/hd-content-022-21.jpg",
+      "assets/archive/hd-content-022-22.jpg",
+      "assets/archive/hd-content-022-23.jpg",
+      "assets/archive/hd-content-022-24.jpg",
+      "assets/archive/hd-content-022-25.jpg",
+      "assets/archive/hd-content-022-26.jpg",
+      "assets/archive/hd-content-022-27.jpg",
+      "assets/archive/hd-content-022-28.jpg",
+      "assets/archive/hd-content-022-29.jpg",
+      "assets/archive/hd-content-022-30.jpg",
+      "assets/archive/hd-content-022-31.jpg",
+      "assets/archive/hd-content-022-32.jpg",
+      "assets/archive/hd-content-022-33.jpg",
+      "assets/archive/hd-content-022-34.jpg",
+      "assets/archive/hd-content-022-35.jpg",
+      "assets/archive/hd-content-022-36.jpg",
+      "assets/archive/hd-content-022-37.jpg",
+      "assets/archive/hd-content-022-38.jpg",
+      "assets/archive/hd-content-022-39.jpg",
+      "assets/archive/hd-content-022-40.jpg",
+      "assets/archive/hd-content-022-41.jpg",
+      "assets/archive/hd-content-022-42.jpg",
+      "assets/archive/hd-content-022-43.jpg",
+      "assets/archive/hd-content-022-44.jpg"
+    ]
   },
   {
     "id": "023",
@@ -181,7 +323,29 @@
     "category": "画册",
     "type": "PDF",
     "image": "assets/archive/023.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-023-01.jpg",
+      "assets/archive/hd-content-023-02.jpg",
+      "assets/archive/hd-content-023-03.jpg",
+      "assets/archive/hd-content-023-04.jpg",
+      "assets/archive/hd-content-023-05.jpg",
+      "assets/archive/hd-content-023-06.jpg",
+      "assets/archive/hd-content-023-07.jpg",
+      "assets/archive/hd-content-023-08.jpg",
+      "assets/archive/hd-content-023-09.jpg",
+      "assets/archive/hd-content-023-10.jpg",
+      "assets/archive/hd-content-023-11.jpg",
+      "assets/archive/hd-content-023-12.jpg",
+      "assets/archive/hd-content-023-13.jpg",
+      "assets/archive/hd-content-023-14.jpg",
+      "assets/archive/hd-content-023-15.jpg",
+      "assets/archive/hd-content-023-16.jpg",
+      "assets/archive/hd-content-023-17.jpg",
+      "assets/archive/hd-content-023-18.jpg",
+      "assets/archive/hd-content-023-19.jpg",
+      "assets/archive/hd-content-023-20.jpg"
+    ]
   },
   {
     "id": "024",
@@ -189,7 +353,25 @@
     "category": "画册",
     "type": "PDF",
     "image": "assets/archive/024.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-024-01.jpg",
+      "assets/archive/scaled-content-024-02.jpg",
+      "assets/archive/scaled-content-024-03.jpg",
+      "assets/archive/scaled-content-024-04.jpg",
+      "assets/archive/scaled-content-024-05.jpg",
+      "assets/archive/scaled-content-024-06.jpg",
+      "assets/archive/scaled-content-024-07.jpg",
+      "assets/archive/scaled-content-024-08.jpg",
+      "assets/archive/scaled-content-024-09.jpg",
+      "assets/archive/scaled-content-024-10.jpg",
+      "assets/archive/scaled-content-024-11.jpg",
+      "assets/archive/scaled-content-024-12.jpg",
+      "assets/archive/scaled-content-024-13.jpg",
+      "assets/archive/scaled-content-024-14.jpg",
+      "assets/archive/scaled-content-024-15.jpg",
+      "assets/archive/scaled-content-024-16.jpg"
+    ]
   },
   {
     "id": "025",
@@ -197,31 +379,89 @@
     "category": "画册",
     "type": "PDF",
     "image": "assets/archive/025.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-025-01.jpg",
+      "assets/archive/scaled-content-025-02.jpg",
+      "assets/archive/scaled-content-025-03.jpg",
+      "assets/archive/scaled-content-025-04.jpg",
+      "assets/archive/scaled-content-025-05.jpg",
+      "assets/archive/scaled-content-025-06.jpg",
+      "assets/archive/scaled-content-025-07.jpg",
+      "assets/archive/scaled-content-025-08.jpg",
+      "assets/archive/scaled-content-025-09.jpg",
+      "assets/archive/scaled-content-025-10.jpg"
+    ]
   },
   {
     "id": "026",
     "title": "海外画册2",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/026.webp",
-    "group": ""
+    "image": "assets/archive/cover-026.png",
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-026-1.jpg",
+      "assets/archive/hd-content-026-2.jpg",
+      "assets/archive/hd-content-026-3.jpg",
+      "assets/archive/hd-content-026-4.jpg",
+      "assets/archive/hd-content-026-5.jpg",
+      "assets/archive/hd-content-026-6.jpg"
+    ]
   },
   {
     "id": "027",
     "title": "海鲜画册",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/027.webp",
-    "group": ""
+    "image": "assets/archive/cover-027.jpg",
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-027-1.jpg",
+      "assets/archive/hd-content-027-2.jpg",
+      "assets/archive/hd-content-027-3.jpg",
+      "assets/archive/hd-content-027-4.jpg",
+      "assets/archive/hd-content-027-5.jpg",
+      "assets/archive/hd-content-027-6.jpg",
+      "assets/archive/hd-content-027-7.jpg",
+      "assets/archive/hd-content-027-8.jpg"
+    ]
   },
   {
     "id": "028",
     "title": "留学画册",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/028.webp",
-    "group": ""
+    "image": "assets/archive/cover-028.jpg",
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-028-01.jpg",
+      "assets/archive/hd-content-028-02.jpg",
+      "assets/archive/hd-content-028-03.jpg",
+      "assets/archive/hd-content-028-04.jpg",
+      "assets/archive/hd-content-028-05.jpg",
+      "assets/archive/hd-content-028-06.jpg",
+      "assets/archive/hd-content-028-07.jpg",
+      "assets/archive/hd-content-028-08.jpg",
+      "assets/archive/hd-content-028-09.jpg",
+      "assets/archive/hd-content-028-10.jpg",
+      "assets/archive/hd-content-028-11.jpg",
+      "assets/archive/hd-content-028-12.jpg",
+      "assets/archive/hd-content-028-13.jpg",
+      "assets/archive/hd-content-028-14.jpg",
+      "assets/archive/hd-content-028-15.jpg",
+      "assets/archive/hd-content-028-16.jpg",
+      "assets/archive/hd-content-028-17.jpg",
+      "assets/archive/hd-content-028-18.jpg",
+      "assets/archive/hd-content-028-19.jpg",
+      "assets/archive/hd-content-028-20.jpg",
+      "assets/archive/hd-content-028-21.jpg",
+      "assets/archive/hd-content-028-22.jpg",
+      "assets/archive/hd-content-028-23.jpg",
+      "assets/archive/hd-content-028-24.jpg",
+      "assets/archive/hd-content-028-25.jpg",
+      "assets/archive/hd-content-028-26.jpg"
+    ]
   },
   {
     "id": "029",
@@ -229,7 +469,26 @@
     "category": "画册",
     "type": "PDF",
     "image": "assets/archive/029.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-029-01.jpg",
+      "assets/archive/scaled-content-029-02.jpg",
+      "assets/archive/scaled-content-029-03.jpg",
+      "assets/archive/scaled-content-029-04.jpg",
+      "assets/archive/scaled-content-029-05.jpg",
+      "assets/archive/scaled-content-029-06.jpg",
+      "assets/archive/scaled-content-029-07.jpg",
+      "assets/archive/scaled-content-029-08.jpg",
+      "assets/archive/scaled-content-029-09.jpg",
+      "assets/archive/scaled-content-029-10.jpg",
+      "assets/archive/scaled-content-029-11.jpg",
+      "assets/archive/scaled-content-029-12.jpg",
+      "assets/archive/scaled-content-029-13.jpg",
+      "assets/archive/scaled-content-029-14.jpg",
+      "assets/archive/scaled-content-029-15.jpg",
+      "assets/archive/scaled-content-029-16.jpg",
+      "assets/archive/scaled-content-029-17.jpg"
+    ]
   },
   {
     "id": "030",
@@ -237,39 +496,32 @@
     "category": "画册",
     "type": "IMAGE",
     "image": "assets/archive/030.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-030.png"
+    ]
   },
   {
     "id": "031",
     "title": "1.球类详情",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/031.webp",
-    "group": ""
-  },
-  {
-    "id": "032",
-    "title": "1.球类详情",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/032.webp",
-    "group": ""
+    "image": "assets/archive/cover-031.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-031.png"
+    ]
   },
   {
     "id": "033",
     "title": "天猫首页",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/033.webp",
-    "group": ""
-  },
-  {
-    "id": "034",
-    "title": "天猫首页",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/034.webp",
-    "group": ""
+    "image": "assets/archive/cover-033.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-033.jpg"
+    ]
   },
   {
     "id": "035",
@@ -277,39 +529,32 @@
     "category": "详情页",
     "type": "IMAGE",
     "image": "assets/archive/035.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-035.jpg"
+    ]
   },
   {
     "id": "036",
     "title": "美妆2",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/036.webp",
-    "group": ""
-  },
-  {
-    "id": "037",
-    "title": "美妆2",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/037.webp",
-    "group": ""
+    "image": "assets/archive/cover-036.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-036.jpg"
+    ]
   },
   {
     "id": "038",
     "title": "美妆4",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/038.webp",
-    "group": ""
-  },
-  {
-    "id": "039",
-    "title": "美妆4",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/039.webp",
-    "group": ""
+    "image": "assets/archive/cover-038.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-038.jpg"
+    ]
   },
   {
     "id": "040",
@@ -317,71 +562,54 @@
     "category": "详情页",
     "type": "IMAGE",
     "image": "assets/archive/040.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-040.jpg"
+    ]
   },
   {
     "id": "041",
     "title": "鞋垫1",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/041.webp",
-    "group": ""
-  },
-  {
-    "id": "042",
-    "title": "鞋垫1",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/042.webp",
-    "group": ""
+    "image": "assets/archive/cover-041.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-041.png"
+    ]
   },
   {
     "id": "043",
     "title": "鞋垫2",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/043.webp",
-    "group": ""
-  },
-  {
-    "id": "044",
-    "title": "鞋垫2",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/044.webp",
-    "group": ""
+    "image": "assets/archive/cover-043.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-043.png"
+    ]
   },
   {
     "id": "045",
     "title": "鞋垫3",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/045.webp",
-    "group": ""
-  },
-  {
-    "id": "046",
-    "title": "鞋垫3",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/046.webp",
-    "group": ""
+    "image": "assets/archive/cover-045.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-045.png"
+    ]
   },
   {
     "id": "047",
     "title": "鞋垫4",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/047.webp",
-    "group": ""
-  },
-  {
-    "id": "048",
-    "title": "鞋垫4",
-    "category": "详情页",
-    "type": "IMAGE",
-    "image": "assets/archive/048.webp",
-    "group": ""
+    "image": "assets/archive/cover-047.png",
+    "group": "",
+    "pages": [
+      "assets/archive/original-047.jpg"
+    ]
   },
   {
     "id": "049",
@@ -389,7 +617,10 @@
     "category": "网站",
     "type": "IMAGE",
     "image": "assets/archive/049.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-049.jpg"
+    ]
   },
   {
     "id": "050",
@@ -397,7 +628,10 @@
     "category": "网站",
     "type": "IMAGE",
     "image": "assets/archive/050.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-050.jpg"
+    ]
   },
   {
     "id": "051",
@@ -405,7 +639,10 @@
     "category": "网站",
     "type": "IMAGE",
     "image": "assets/archive/051.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-051.png"
+    ]
   },
   {
     "id": "052",
@@ -413,7 +650,10 @@
     "category": "网站",
     "type": "IMAGE",
     "image": "assets/archive/052.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-052.jpg"
+    ]
   },
   {
     "id": "053",
@@ -421,7 +661,18 @@
     "category": "展会",
     "type": "PDF",
     "image": "assets/archive/053.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-053-1.jpg",
+      "assets/archive/hd-content-053-2.jpg",
+      "assets/archive/hd-content-053-3.jpg",
+      "assets/archive/hd-content-053-4.jpg",
+      "assets/archive/hd-content-053-5.jpg",
+      "assets/archive/hd-content-053-6.jpg",
+      "assets/archive/hd-content-053-7.jpg",
+      "assets/archive/hd-content-053-8.jpg",
+      "assets/archive/hd-content-053-9.jpg"
+    ]
   },
   {
     "id": "054",
@@ -429,7 +680,17 @@
     "category": "展会",
     "type": "PDF",
     "image": "assets/archive/054.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-054-1.jpg",
+      "assets/archive/hd-content-054-2.jpg",
+      "assets/archive/hd-content-054-3.jpg",
+      "assets/archive/hd-content-054-4.jpg",
+      "assets/archive/hd-content-054-5.jpg",
+      "assets/archive/hd-content-054-6.jpg",
+      "assets/archive/hd-content-054-7.jpg",
+      "assets/archive/hd-content-054-8.jpg"
+    ]
   },
   {
     "id": "055",
@@ -437,7 +698,13 @@
     "category": "展会",
     "type": "PDF",
     "image": "assets/archive/055.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-055-1.jpg",
+      "assets/archive/hd-content-055-2.jpg",
+      "assets/archive/hd-content-055-3.jpg",
+      "assets/archive/hd-content-055-4.jpg"
+    ]
   },
   {
     "id": "056",
@@ -445,7 +712,18 @@
     "category": "活动",
     "type": "PDF",
     "image": "assets/archive/056.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-056-1.jpg",
+      "assets/archive/hd-content-056-2.jpg",
+      "assets/archive/hd-content-056-3.jpg",
+      "assets/archive/hd-content-056-4.jpg",
+      "assets/archive/hd-content-056-5.jpg",
+      "assets/archive/hd-content-056-6.jpg",
+      "assets/archive/hd-content-056-7.jpg",
+      "assets/archive/hd-content-056-8.jpg",
+      "assets/archive/hd-content-056-9.jpg"
+    ]
   },
   {
     "id": "057",
@@ -453,7 +731,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/057.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-057.jpg"
+    ]
   },
   {
     "id": "058",
@@ -461,7 +742,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/058.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-058.jpg"
+    ]
   },
   {
     "id": "059",
@@ -469,7 +753,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/059.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-059.jpg"
+    ]
   },
   {
     "id": "060",
@@ -477,7 +764,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/060.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-060.jpg"
+    ]
   },
   {
     "id": "061",
@@ -485,7 +775,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/061.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-061.jpg"
+    ]
   },
   {
     "id": "062",
@@ -493,7 +786,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/062.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-062.jpg"
+    ]
   },
   {
     "id": "063",
@@ -501,7 +797,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/063.webp",
-    "group": "华荣科源输"
+    "group": "华荣科源输",
+    "pages": [
+      "assets/archive/original-063.jpg"
+    ]
   },
   {
     "id": "064",
@@ -509,7 +808,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/064.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-064.jpg"
+    ]
   },
   {
     "id": "065",
@@ -517,7 +819,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/065.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-065.jpg"
+    ]
   },
   {
     "id": "066",
@@ -525,7 +830,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/066.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-066.jpg"
+    ]
   },
   {
     "id": "067",
@@ -533,7 +841,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/067.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-067.jpg"
+    ]
   },
   {
     "id": "068",
@@ -541,7 +852,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/068.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-068.jpg"
+    ]
   },
   {
     "id": "069",
@@ -549,7 +863,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/069.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-069.jpg"
+    ]
   },
   {
     "id": "070",
@@ -557,7 +874,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/070.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-070.jpg"
+    ]
   },
   {
     "id": "071",
@@ -565,7 +885,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/071.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-071.jpg"
+    ]
   },
   {
     "id": "072",
@@ -573,7 +896,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/072.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-072.jpg"
+    ]
   },
   {
     "id": "073",
@@ -581,7 +907,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/073.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-073.jpg"
+    ]
   },
   {
     "id": "074",
@@ -589,7 +918,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/074.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-074.jpg"
+    ]
   },
   {
     "id": "075",
@@ -597,7 +929,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/075.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-075.jpg"
+    ]
   },
   {
     "id": "076",
@@ -605,7 +940,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/076.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-076.jpg"
+    ]
   },
   {
     "id": "077",
@@ -613,7 +951,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/077.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-077.jpg"
+    ]
   },
   {
     "id": "078",
@@ -621,7 +962,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/078.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-078.jpg"
+    ]
   },
   {
     "id": "079",
@@ -629,7 +973,10 @@
     "category": "宣传dm",
     "type": "IMAGE",
     "image": "assets/archive/079.webp",
-    "group": "留学"
+    "group": "留学",
+    "pages": [
+      "assets/archive/original-079.jpg"
+    ]
   },
   {
     "id": "080",
@@ -637,7 +984,20 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/080.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-080-01.jpg",
+      "assets/archive/hd-content-080-02.jpg",
+      "assets/archive/hd-content-080-03.jpg",
+      "assets/archive/hd-content-080-04.jpg",
+      "assets/archive/hd-content-080-05.jpg",
+      "assets/archive/hd-content-080-06.jpg",
+      "assets/archive/hd-content-080-07.jpg",
+      "assets/archive/hd-content-080-08.jpg",
+      "assets/archive/hd-content-080-09.jpg",
+      "assets/archive/hd-content-080-10.jpg",
+      "assets/archive/hd-content-080-11.jpg"
+    ]
   },
   {
     "id": "081",
@@ -645,7 +1005,18 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/081.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-081-1.jpg",
+      "assets/archive/hd-content-081-2.jpg",
+      "assets/archive/hd-content-081-3.jpg",
+      "assets/archive/hd-content-081-4.jpg",
+      "assets/archive/hd-content-081-5.jpg",
+      "assets/archive/hd-content-081-6.jpg",
+      "assets/archive/hd-content-081-7.jpg",
+      "assets/archive/hd-content-081-8.jpg",
+      "assets/archive/hd-content-081-9.jpg"
+    ]
   },
   {
     "id": "082",
@@ -653,7 +1024,13 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/082.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-082-1.jpg",
+      "assets/archive/hd-content-082-2.jpg",
+      "assets/archive/hd-content-082-3.jpg",
+      "assets/archive/hd-content-082-4.jpg"
+    ]
   },
   {
     "id": "083",
@@ -661,7 +1038,17 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/083.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-083-1.jpg",
+      "assets/archive/hd-content-083-2.jpg",
+      "assets/archive/hd-content-083-3.jpg",
+      "assets/archive/hd-content-083-4.jpg",
+      "assets/archive/hd-content-083-5.jpg",
+      "assets/archive/hd-content-083-6.jpg",
+      "assets/archive/hd-content-083-7.jpg",
+      "assets/archive/hd-content-083-8.jpg"
+    ]
   },
   {
     "id": "084",
@@ -669,7 +1056,18 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/084.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-084-1.jpg",
+      "assets/archive/hd-content-084-2.jpg",
+      "assets/archive/hd-content-084-3.jpg",
+      "assets/archive/hd-content-084-4.jpg",
+      "assets/archive/hd-content-084-5.jpg",
+      "assets/archive/hd-content-084-6.jpg",
+      "assets/archive/hd-content-084-7.jpg",
+      "assets/archive/hd-content-084-8.jpg",
+      "assets/archive/hd-content-084-9.jpg"
+    ]
   },
   {
     "id": "085",
@@ -677,7 +1075,17 @@
     "category": "logo",
     "type": "PDF",
     "image": "assets/archive/085.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/hd-content-085-1.jpg",
+      "assets/archive/hd-content-085-2.jpg",
+      "assets/archive/hd-content-085-3.jpg",
+      "assets/archive/hd-content-085-4.jpg",
+      "assets/archive/hd-content-085-5.jpg",
+      "assets/archive/hd-content-085-6.jpg",
+      "assets/archive/hd-content-085-7.jpg",
+      "assets/archive/hd-content-085-8.jpg"
+    ]
   },
   {
     "id": "086",
@@ -685,7 +1093,10 @@
     "category": "logo",
     "type": "IMAGE",
     "image": "assets/archive/086.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/original-086.png"
+    ]
   },
   {
     "id": "087",
@@ -693,7 +1104,19 @@
     "category": "ppt",
     "type": "PPT",
     "image": "assets/archive/087.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-087-01.jpg",
+      "assets/archive/scaled-content-087-02.jpg",
+      "assets/archive/scaled-content-087-03.jpg",
+      "assets/archive/scaled-content-087-04.jpg",
+      "assets/archive/scaled-content-087-05.jpg",
+      "assets/archive/scaled-content-087-06.jpg",
+      "assets/archive/scaled-content-087-07.jpg",
+      "assets/archive/scaled-content-087-08.jpg",
+      "assets/archive/scaled-content-087-09.jpg",
+      "assets/archive/scaled-content-087-10.jpg"
+    ]
   },
   {
     "id": "088",
@@ -701,7 +1124,24 @@
     "category": "ppt",
     "type": "PPT",
     "image": "assets/archive/088.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-088-01.jpg",
+      "assets/archive/scaled-content-088-02.jpg",
+      "assets/archive/scaled-content-088-03.jpg",
+      "assets/archive/scaled-content-088-04.jpg",
+      "assets/archive/scaled-content-088-05.jpg",
+      "assets/archive/scaled-content-088-06.jpg",
+      "assets/archive/scaled-content-088-07.jpg",
+      "assets/archive/scaled-content-088-08.jpg",
+      "assets/archive/scaled-content-088-09.jpg",
+      "assets/archive/scaled-content-088-10.jpg",
+      "assets/archive/scaled-content-088-11.jpg",
+      "assets/archive/scaled-content-088-12.jpg",
+      "assets/archive/scaled-content-088-13.jpg",
+      "assets/archive/scaled-content-088-14.jpg",
+      "assets/archive/scaled-content-088-15.jpg"
+    ]
   },
   {
     "id": "089",
@@ -709,7 +1149,47 @@
     "category": "ppt",
     "type": "PPT",
     "image": "assets/archive/089.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-089-01.jpg",
+      "assets/archive/scaled-content-089-02.jpg",
+      "assets/archive/scaled-content-089-03.jpg",
+      "assets/archive/scaled-content-089-04.jpg",
+      "assets/archive/scaled-content-089-05.jpg",
+      "assets/archive/scaled-content-089-06.jpg",
+      "assets/archive/scaled-content-089-07.jpg",
+      "assets/archive/scaled-content-089-08.jpg",
+      "assets/archive/scaled-content-089-09.jpg",
+      "assets/archive/scaled-content-089-10.jpg",
+      "assets/archive/scaled-content-089-11.jpg",
+      "assets/archive/scaled-content-089-12.jpg",
+      "assets/archive/scaled-content-089-13.jpg",
+      "assets/archive/scaled-content-089-14.jpg",
+      "assets/archive/scaled-content-089-15.jpg",
+      "assets/archive/scaled-content-089-16.jpg",
+      "assets/archive/scaled-content-089-17.jpg",
+      "assets/archive/scaled-content-089-18.jpg",
+      "assets/archive/scaled-content-089-19.jpg",
+      "assets/archive/scaled-content-089-20.jpg",
+      "assets/archive/scaled-content-089-21.jpg",
+      "assets/archive/scaled-content-089-22.jpg",
+      "assets/archive/scaled-content-089-23.jpg",
+      "assets/archive/scaled-content-089-24.jpg",
+      "assets/archive/scaled-content-089-25.jpg",
+      "assets/archive/scaled-content-089-26.jpg",
+      "assets/archive/scaled-content-089-27.jpg",
+      "assets/archive/scaled-content-089-28.jpg",
+      "assets/archive/scaled-content-089-29.jpg",
+      "assets/archive/scaled-content-089-30.jpg",
+      "assets/archive/scaled-content-089-31.jpg",
+      "assets/archive/scaled-content-089-32.jpg",
+      "assets/archive/scaled-content-089-33.jpg",
+      "assets/archive/scaled-content-089-34.jpg",
+      "assets/archive/scaled-content-089-35.jpg",
+      "assets/archive/scaled-content-089-36.jpg",
+      "assets/archive/scaled-content-089-37.jpg",
+      "assets/archive/scaled-content-089-38.jpg"
+    ]
   },
   {
     "id": "090",
@@ -717,6 +1197,26 @@
     "category": "ppt",
     "type": "PPT",
     "image": "assets/archive/090.webp",
-    "group": ""
+    "group": "",
+    "pages": [
+      "assets/archive/scaled-content-090-01.jpg",
+      "assets/archive/scaled-content-090-02.jpg",
+      "assets/archive/scaled-content-090-03.jpg",
+      "assets/archive/scaled-content-090-04.jpg",
+      "assets/archive/scaled-content-090-05.jpg",
+      "assets/archive/scaled-content-090-06.jpg",
+      "assets/archive/scaled-content-090-07.jpg",
+      "assets/archive/scaled-content-090-08.jpg",
+      "assets/archive/scaled-content-090-09.jpg",
+      "assets/archive/scaled-content-090-10.jpg",
+      "assets/archive/scaled-content-090-11.jpg",
+      "assets/archive/scaled-content-090-12.jpg",
+      "assets/archive/scaled-content-090-13.jpg",
+      "assets/archive/scaled-content-090-14.jpg",
+      "assets/archive/scaled-content-090-15.jpg",
+      "assets/archive/scaled-content-090-16.jpg",
+      "assets/archive/scaled-content-090-17.jpg",
+      "assets/archive/scaled-content-090-18.jpg"
+    ]
   }
 ]
