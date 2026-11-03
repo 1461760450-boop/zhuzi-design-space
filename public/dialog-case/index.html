@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="MS.DORY 身体便携湿巾系列包装与刀线结构设计案例" />
+  <title>MS.DORY — Body Wipes Packaging Case Study</title>
+  <style>
+    :root {
+      --ink: #102822;
+      --paper: #f5f4ed;
+      --acid: #b5e43b;
+      --aqua: #0b8b88;
+      --sky: #dff3f6;
+      --line: rgba(16, 40, 34, .18);
+      --max: 1480px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; }
+    img { display: block; width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(var(--max), calc(100% - 64px)); margin: auto; }
+    .label { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; }
+    .muted { color: rgba(16, 40, 34, .58); }
+    header { height: 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+    .mark { font-weight: 800; letter-spacing: -.03em; }
+    nav { display: flex; gap: 28px; font-size: 11px; letter-spacing: .08em; }
+    .hero { padding: 32px 0 120px; }
+    .hero-top { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 40px; padding: 64px 0 36px; }
+    h1 { margin: 0; font-size: clamp(62px, 10vw, 154px); line-height: .82; letter-spacing: -.075em; font-weight: 800; }
+    h1 span { color: var(--aqua); font-weight: 400; font-family: Georgia, serif; font-style: italic; }
+    .hero-note { width: 300px; font-size: 14px; line-height: 1.75; }
+    .hero-image { overflow: hidden; background: var(--sky); aspect-ratio: 16 / 9; }
+    .hero-image img { height: 100%; object-fit: cover; }
+    .hero-meta { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+    .meta { padding: 19px 0 22px; border-right: 1px solid var(--line); }
+    .meta + .meta { padding-left: 22px; }
+    .meta:last-child { border-right: 0; }
+    .meta b { display: block; margin-top: 9px; font-size: 13px; font-weight: 600; }
+    section { padding: 120px 0; border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 9vw; margin-bottom: 72px; }
+    h2 { margin: 14px 0 0; font-size: clamp(48px, 6.5vw, 96px); line-height: .92; letter-spacing: -.065em; }
+    .copy { max-width: 680px; }
+    .copy p { margin: 0 0 24px; font-size: 16px; line-height: 1.9; }
+    .targets { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 40px; }
+    .pill { padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 11px; }
+    .feature-stage { background: var(--ink); color: var(--paper); }
+    .feature-stage .muted { color: rgba(245, 244, 237, .58); }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(255, 255, 255, .2); }
+    .feature { min-height: 250px; padding: 24px; border-right: 1px solid rgba(255, 255, 255, .2); border-bottom: 1px solid rgba(255, 255, 255, .2); }
+    .feature:nth-child(3n) { border-right: 0; }
+    .feature strong { display: block; margin-top: 84px; font-size: clamp(21px, 2.2vw, 34px); letter-spacing: -.04em; }
+    .feature p { margin: 10px 0 0; color: rgba(245, 244, 237, .62); font-size: 13px; line-height: 1.6; }
+    .photo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    figure { margin: 0; }
+    .photo-duo figure { background: #e9eee8; }
+    .photo-duo img { height: 820px; object-fit: cover; }
+    figcaption { display: flex; justify-content: space-between; gap: 20px; padding: 14px 2px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+    .structure { background: var(--acid); }
+    .structure-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 10vw; align-items: start; }
+    .dimensions { margin-top: 54px; border-top: 1px solid rgba(16, 40, 34, .4); }
+    .dimension { display: grid; grid-template-columns: 150px 1fr; padding: 18px 0; border-bottom: 1px solid rgba(16, 40, 34, .4); }
+    .dimension strong { font-size: 28px; letter-spacing: -.04em; }
+    .structure-copy p { font-size: 16px; line-height: 1.85; }
+    .diagram { margin-top: 42px; padding: 28px; background: rgba(245, 244, 237, .5); }
+    .diagram-line { height: 210px; display: grid; grid-template-columns: 34px 155fr 100fr 155fr 100fr 155fr 31fr; align-items: stretch; }
+    .diagram-line span { border: 1px solid rgba(16, 40, 34, .52); border-right: 0; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; font-size: 9px; letter-spacing: .1em; }
+    .diagram-line span:last-child { border-right: 1px solid rgba(16, 40, 34, .52); }
+    .diagram small { display: block; margin-top: 16px; line-height: 1.7; }
+    .color-section { padding-bottom: 0; }
+    .color-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .color-card { min-height: 300px; padding: 34px; display: flex; flex-direction: column; justify-content: space-between; }
+    .color-card.green { background: var(--acid); }
+    .color-card.blue { background: var(--aqua); color: white; }
+    .color-card h3 { margin: 0; font-size: clamp(40px, 5vw, 72px); letter-spacing: -.055em; }
+    .color-card p { max-width: 420px; font-size: 14px; line-height: 1.75; }
+    .stack-image { aspect-ratio: 1 / 1; overflow: hidden; }
+    .stack-image img { height: 100%; object-fit: cover; }
+    .lifestyle { background: var(--sky); }
+    .lifestyle-grid { display: grid; grid-template-columns: .72fr 1.28fr; gap: 16px; align-items: stretch; }
+    .lifestyle-copy { padding: 34px; background: var(--paper); display: flex; flex-direction: column; justify-content: space-between; }
+    .lifestyle-copy h2 { font-size: clamp(52px, 7vw, 110px); }
+    .lifestyle-copy p { max-width: 430px; font-size: 14px; line-height: 1.8; }
+    .lifestyle-image img { height: 100%; object-fit: cover; }
+    footer { min-height: 70vh; background: var(--ink); color: white; display: flex; align-items: end; }
+    .footer-inner { padding: 100px 0 40px; }
+    .footer-title { font-size: clamp(70px, 12vw, 180px); line-height: .8; letter-spacing: -.08em; font-weight: 800; }
+    .footer-title span { color: var(--acid); font-family: Georgia, serif; font-style: italic; font-weight: 400; }
+    .footer-row { display: flex; justify-content: space-between; margin-top: 100px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
+    @media (max-width: 800px) {
+      .shell { width: calc(100% - 32px); }
+      header { height: 60px; }
+      nav { display: none; }
+      .hero { padding-bottom: 80px; }
+      .hero-top, .section-head, .structure-grid, .lifestyle-grid { grid-template-columns: 1fr; }
+      .hero-note { width: auto; }
+      .hero-image { aspect-ratio: 4 / 3; }
+      .hero-meta { grid-template-columns: 1fr 1fr; }
+      .meta:nth-child(2) { border-right: 0; }
+      section { padding: 84px 0; }
+      .features { grid-template-columns: 1fr; }
+      .feature { border-right: 0; min-height: 190px; }
+      .feature strong { margin-top: 46px; }
+      .photo-duo, .color-intro { grid-template-columns: 1fr; }
+      .photo-duo img { height: auto; max-height: 680px; }
+      .diagram-line { height: 150px; }
+      .lifestyle-copy { min-height: 520px; }
+      .footer-row { display: grid; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell">
+    <a class="mark" href="#top">MS.DORY®</a>
+    <nav><a href="#overview">Overview</a><a href="#features">Features</a><a href="#structure">Structure</a><a href="#color">Colorway</a></nav>
+    <span class="label muted">Packaging case / 2026</span>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-top">
+        <div><span class="label muted">Body wipes packaging design</span><h1>Clean.<br><span>Anywhere.</span></h1></div>
+        <p class="hero-note">MS.DORY 身体便携湿巾系列包装与刀线结构设计。为运动、旅行与日常护理建立清晰、轻盈且便于识别的包装系统。</p>
+      </div>
+      <div class="hero-image"><img src="assets/01-hero.png" alt="MS.DORY 身体湿巾系列包装主视觉" /></div>
+      <div class="hero-meta">
+        <div class="meta"><span class="label muted">Project</span><b>MS.DORY Body Wipes</b></div>
+        <div class="meta"><span class="label muted">Type</span><b>Portable body wipes</b></div>
+        <div class="meta"><span class="label muted">Scope</span><b>Visual + Dieline</b></div>
+        <div class="meta"><span class="label muted">Pack</span><b>20 Count / XXL</b></div>
+      </div>
+    </section>
+
+    <section id="overview">
+      <div class="shell section-head">
+        <div><span class="label muted">01 / Project overview</span><h2>便携之下，<br>仍然完整。</h2></div>
+        <div class="copy">
+          <p>项目面向热爱户外运动、健身、差旅以及注重个人护理的消费者。设计目标是用科学的刀线结构和直观的视觉语言，清楚传达大尺寸、免洗、环保与温和护理等核心价值。</p>
+          <p>包装正面以高对比产品名建立第一信息层级，抽象植物叶片跨越盒身各面，既形成系列识别，也让方正纸盒获得流动、清新的视觉感受。</p>
+          <div class="targets"><span class="pill">Travel 旅行</span><span class="pill">Gym 健身</span><span class="pill">Outdoor 户外</span><span class="pill">Personal Care 日常护理</span></div>
+        </div>
+      </div>
+      <div class="shell photo-duo">
+        <figure><img src="assets/03-balance.png" alt="两盒 MS.DORY 包装平衡陈列" /><figcaption><span>Balance study</span><span>Form / Portability</span></figcaption></figure>
+        <figure><img src="assets/02-sky.png" alt="蓝天背景下的 MS.DORY 包装" /><figcaption><span>Outdoor freshness</span><span>Color / Light</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="feature-stage" id="features">
+      <div class="shell">
+        <div class="section-head"><div><span class="label muted">02 / Key selling points</span><h2>功能，<br>一眼可读。</h2></div><div class="copy muted"><p>将规格、配方和可持续信息拆分为短句与图标模块，控制阅读顺序，让消费者无需翻找就能快速理解产品。</p></div></div>
+        <div class="features">
+          <article class="feature"><span class="label muted">01</span><strong>1 Wipe 2 Textures</strong><p>双面双效纹理，满足不同清洁需求。</p></article>
+          <article class="feature"><span class="label muted">02</span><strong>Rinse Free</strong><p>免水洗，随时随地保持清爽。</p></article>
+          <article class="feature"><span class="label muted">03</span><strong>Alcohol Free</strong><p>无酒精配方，温和不刺激。</p></article>
+          <article class="feature"><span class="label muted">04</span><strong>pH-Balanced</strong><p>平衡配方，呵护肌肤天然屏障。</p></article>
+          <article class="feature"><span class="label muted">05</span><strong>Biodegradable</strong><p>可生物降解材质与天然清洁成分。</p></article>
+          <article class="feature"><span class="label muted">06</span><strong>XXL 12″ × 12″</strong><p>加厚大尺寸，20 片装，单片满足全身清洁。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="structure" id="structure">
+      <div class="shell structure-grid">
+        <div><span class="label">03 / Dieline &amp; structure</span><h2>每一条线，<br>都服务于开启。</h2><div class="dimensions"><div class="dimension"><span class="label">Flat size</span><strong>730 × 355 mm</strong></div><div class="dimension"><span class="label">Formed size</span><strong>155 × 155 × 100 mm</strong></div></div></div>
+        <div class="structure-copy"><p>采用一体成型折叠纸盒结构，通过压线与锁扣插舌提升运输稳定性。顶部弧形翻盖配合易撕虚线，在密封保护与日常抽取之间取得平衡。</p><div class="diagram"><div class="diagram-line"><span>Glue</span><span>155</span><span>100</span><span>155</span><span>100</span><span>155</span><span>Lock</span></div><small>STRUCTURAL RHYTHM · 主视面、侧面与插舌按成型尺寸展开，形成 730 mm 横向刀线结构示意。</small></div></div>
+      </div>
+    </section>
+
+    <section class="color-section" id="color">
+      <div class="shell section-head"><div><span class="label muted">04 / SKU colorway</span><h2>两种体验，<br>一个家族。</h2></div><div class="copy"><p>以相同的抽象叶片和信息骨架维持品牌一致性，再通过主色比例改变产品感受，让消费者在货架上快速区分不同 SKU。</p></div></div>
+      <div class="shell color-intro"><article class="color-card green"><span class="label">Aloe Vera</span><div><h3>Alive &amp; gentle.</h3><p>草绿色与局部蓝色交织，强调天然植物、滋润与温和护理。</p></div></article><article class="color-card blue"><span class="label">Unscented</span><div><h3>Pure &amp; quiet.</h3><p>以清爽蓝色为主、绿色点缀，传达纯净、低负担与无香护理体验。</p></div></article></div>
+      <div class="stack-image"><img src="assets/04-stack.png" alt="MS.DORY 身体湿巾包装系列堆叠展示" /></div>
+    </section>
+
+    <section class="lifestyle">
+      <div class="shell lifestyle-grid"><div class="lifestyle-copy"><span class="label muted">05 / Lifestyle application</span><div><h2>Move light.<br>Stay fresh.</h2><p>通过户外使用、随身携带与购物场景，让便携尺寸和真实使用方式直接可见，建立从包装视觉到生活体验的完整联系。</p></div></div><div class="lifestyle-image"><img src="assets/05-lifestyle.png" alt="MS.DORY 身体湿巾户外旅行生活方式场景" /></div></div>
+    </section>
+  </main>
+
+  <footer><div class="shell footer-inner"><div class="footer-title">Designed to go.<br><span>Made to care.</span></div><div class="footer-row label"><span>MS.DORY Body Wipes</span><span>Packaging · Structure · Visual System</span><span>Case Study / 2026</span></div></div></footer>
+</body>
+</html>
