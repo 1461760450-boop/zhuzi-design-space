@@ -18,16 +18,10 @@ const normalize = s => path.basename(s).replace(/\.[^.]+$/, '').replace(/封面|
     const first = path.join('dist',r.pages[0]);
     const cover = path.join('dist',r.image);
     if (cover !== first && fs.existsSync(first)) {
-      const metadata = await sharp(first).metadata();
-      if (metadata.height > 16383 || metadata.width > 16383) {
         for (const file of walk('dist/assets').filter(f => f.endsWith('.js'))) {
           fs.writeFileSync(file,fs.readFileSync(file,'utf8').split(r.image).join(r.pages[0]));
         }
         continue;
-      }
-      const ext = path.extname(cover).toLowerCase();
-      await sharp(first).toFormat(ext === '.jpg' || ext === '.jpeg' ? 'jpeg' : ext.slice(1), {quality:100,lossless:true}).toFile(cover+'.tmp');
-      fs.renameSync(cover+'.tmp',cover);
     }
   }
   let count = 0;
