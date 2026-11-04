@@ -24,7 +24,7 @@ const walk = d => fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirector
  }
  for(const [from,to] of replacements) if(fs.existsSync(from)||!fs.existsSync(to)) replacements.delete(from);
  for(const file of walk('dist').filter(f=>/\.(js|css|html|json)$/i.test(f))){
-  const content=fs.readFileSync(file,'utf8').replace(/\/?(?:[A-Za-z0-9_%~.-]+\/)*[A-Za-z0-9_%~.-]+\.(?:png|jpe?g)(?![\w.-])/gi,ref=>{
+  const content=fs.readFileSync(file,'utf8').replace(/\/?(?:[\p{L}\p{N}_%~. -]+\/)*[\p{L}\p{N}_%~. -]+\.(?:png|jpe?g)(?![\p{L}\p{N}_.-])/giu,ref=>{
    const relative=path.resolve(path.dirname(file),ref);
    const root=path.resolve('dist',ref.replace(/^\//,''));
    const resolved=ref.startsWith('/')?root:replacements.has(relative)?relative:root;
