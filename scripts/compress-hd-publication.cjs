@@ -24,8 +24,10 @@ const walk = d => fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirector
  }
  for(const [from,to] of replacements) if(fs.existsSync(from)||!fs.existsSync(to)) replacements.delete(from);
  for(const file of walk('dist').filter(f=>/\.(js|css|html|json)$/i.test(f))){
-  const content=fs.readFileSync(file,'utf8').replace(/(?:[A-Za-z0-9_%~-]+\/)*[A-Za-z0-9_%~-]+\.(?:png|jpe?g)(?![\w.-])/gi,ref=>{
-   const resolved=ref.startsWith('assets/')?path.resolve('dist',ref):path.resolve(path.dirname(file),ref);
+  const content=fs.readFileSync(file,'utf8').replace(/\/?(?:[A-Za-z0-9_%~.-]+\/)*[A-Za-z0-9_%~.-]+\.(?:png|jpe?g)(?![\w.-])/gi,ref=>{
+   const relative=path.resolve(path.dirname(file),ref);
+   const root=path.resolve('dist',ref.replace(/^\//,''));
+   const resolved=ref.startsWith('/')?root:replacements.has(relative)?relative:root;
    return replacements.has(resolved)?ref+'.webp':ref;
   });
   fs.writeFileSync(file,content);
