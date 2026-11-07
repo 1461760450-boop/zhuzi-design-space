@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type PointerEvent } from 'react'
 import { ArrowRight, ArrowUpRight, Menu, X } from 'lucide-react'
 import archiveData from './archive.generated.json'
+import embeddedImageCache from './embedded-image-cache.generated.json'
 import MarqueeSection from './MarqueeSection'
 import MouseTrail from './MouseTrail'
 
@@ -139,7 +140,27 @@ function EmbeddedBodyWipeCase({ onClose, onOpen, onMore }: { onClose: () => void
     <button className="embedded-case-close" aria-label="关闭项目案例" onClick={onClose}><X /></button>
     <iframe ref={frameRef} title="MS.DORYA Body Wipe 完整案例" src={asset('ms-dory-portfolio-page/index.html')} onLoad={event => {
       const doc = event.currentTarget.contentDocument
-      if (!doc || doc.querySelector('.packaging-related')) return
+      if (!doc) return
+      if (!doc.documentElement.dataset.localImagesReady) {
+        doc.documentElement.dataset.localImagesReady = 'true'
+        const cache = embeddedImageCache as Record<string, string>
+        const localizeImages = () => doc.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+          const candidates = [img.getAttribute('src'), img.getAttribute('srcset')?.split(',')[0]?.trim().split(/\s+/)[0]]
+          for (const candidate of candidates) {
+            if (!candidate) continue
+            const url = new URL(candidate, doc.baseURI)
+            const local = cache[url.origin + url.pathname]
+            if (!local) continue
+            const destination = new URL(asset(local), window.location.href).href
+            if (img.src !== destination) img.src = destination
+            if (img.hasAttribute('srcset')) img.removeAttribute('srcset')
+            break
+          }
+        })
+        localizeImages()
+        new MutationObserver(localizeImages).observe(doc.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['src', 'srcset'] })
+      }
+      if (doc.querySelector('.packaging-related')) return
       const style = doc.createElement('style')
       style.textContent = 'footer,.framer-xyo2mx{display:none!important}.packaging-related{padding:64px 4%;background:#111;color:#fff;width:100%;box-sizing:border-box}.packaging-related h2{font:400 40px/1.2 Arial;margin:0 0 12px}.packaging-related p{color:#999;margin-bottom:28px}.packaging-related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.packaging-related button{padding:0;border:0;border-radius:12px;overflow:hidden;background:#191919;color:white;text-align:left;cursor:pointer}.packaging-related img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}.packaging-related strong{display:block;padding:18px;font:400 16px Arial}@media(max-width:600px){.packaging-related-grid{grid-template-columns:1fr}}'
       doc.head.append(style)
