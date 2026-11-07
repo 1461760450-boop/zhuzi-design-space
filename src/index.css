@@ -30,7 +30,7 @@
   .intro-center p,.intro-center>div{font-size:clamp(12px,.7vw,18px);font-weight:500;line-height:1.35}
   .intro-center p{max-width:20em}
   .intro-center p::after,.intro-center>div::after{content:"";display:block;width:5px;height:5px;margin-top:18px;background:rgba(255,255,255,.3)}
-  .hero-brand{left:50%;right:2.5%;bottom:7%;font-size:94vw;text-align:left;line-height:.9;letter-spacing:-.065em;white-space:nowrap}
+  .intro h1.hero-brand{left:auto;right:2.5%;bottom:7%;width:max-content;max-width:95vw;font-size:clamp(136px,16.4vw,300px);text-align:right;line-height:.85;letter-spacing:-.075em;white-space:nowrap}
   .trust{left:2.1vw;bottom:9%;gap:12px}
 }
 

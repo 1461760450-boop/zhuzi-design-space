@@ -274,7 +274,8 @@ function MaterialsWebsiteCase({ onClose }: { onClose: () => void }) {
             if (!doc || doc.documentElement.dataset.previewReady) return
             doc.documentElement.dataset.previewReady = 'true'
             const style = doc.createElement('style')
-            style.textContent = '.site-header{position:sticky!important;top:0!important;transform:none!important;visibility:visible!important;z-index:1000!important}.site-header-spacer{display:none!important}html,body{overscroll-behavior:contain}section.hero#top{background-image:url("' + new URL(asset('assets/cases/found-fair/polymer-hero.png'), location.origin).href + '")!important;background-size:cover!important;background-position:center!important}section.hero#top>img{visibility:hidden!important}'
+            style.textContent = '.site-header{position:sticky!important;top:0!important;transform:none!important;visibility:visible!important;z-index:1000!important}.site-header-spacer{display:none!important}html,body{overscroll-behavior:contain}'
+            if (/leadfair-banner-(en|preview)\.html$/.test(doc.location.pathname)) style.textContent += 'section.hero#top{background-image:url("' + new URL(asset('assets/cases/found-fair/polymer-hero.png'), location.origin).href + '")!important;background-size:cover!important;background-position:center!important}section.hero#top>img{visibility:hidden!important}'
             doc.head.appendChild(style)
             frame.contentWindow?.scrollTo({ top: 0, behavior: 'instant' })
             doc.addEventListener('click', (click) => {
@@ -287,7 +288,8 @@ function MaterialsWebsiteCase({ onClose }: { onClose: () => void }) {
               click.preventDefault()
               click.stopImmediatePropagation()
               const route = isLocalHome ? '' : destinationUrl.pathname.replace('/leadfair-materials/', '').replace(/^(en|zh-tw|vi)\/?/, '').replace(/^\/+|\/+$/g, '')
-              const localPage = route ? 'https://leadfair433-lab.github.io/leadfair-materials/en/' + route + '/' : asset('leadfair-banner-en.html?v=materials-7')
+              const cachedRoutes = new Set(['products', 'articles', 'company', 'honors', 'contact', 'products/ius-4065', 'products/lf-et78a', 'products/lf-hr53a', 'products/gte-8030', 'products/gte-8075', 'blog/chemical-foaming-vs-supercritical-foaming', 'blog/biobased-carbon14-biodegradability', 'blog/eva-foam-shrinkage-ius-4065'])
+              const localPage = !route ? asset('leadfair-banner-en.html?v=materials-local') : cachedRoutes.has(route) ? asset(`materials-preview/en_${route.replaceAll('/', '_')}_.html`) : 'https://leadfair433-lab.github.io/leadfair-materials/en/' + route + '/'
               frame.src = localPage + (route ? destinationUrl.hash : '')
             }, true)
             const language = doc.querySelector<HTMLSelectElement>('.language-switcher select')

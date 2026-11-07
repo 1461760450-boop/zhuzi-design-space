@@ -15,7 +15,7 @@ const walk = d => fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirector
   if(meta.width*meta.height>8000000)continue; // Preserve very large originals unchanged.
   if(meta.width>16383||meta.height>16383)continue; // WebP dimension limit: retain long original.
   const out=file+'.webp';
-  const textHeavy=/archive|brochure|dimensions|floor-plan|lighting-material|screen-material/.test(file);
+  const textHeavy=/archive|brochure|dimensions|floor-plan|lighting-material|screen-material|embedded-images/.test(file);
   await sharp(file).webp(textHeavy?{lossless:true,effort:0}:{quality:90,effort:4,smartSubsample:true}).toFile(out);
   const after=await sharp(out).metadata();
   if(after.width!==meta.width||after.height!==meta.height)throw Error('Image dimensions changed: '+file);
