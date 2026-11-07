@@ -14,17 +14,6 @@ const normalize = s => path.basename(s).replace(/\.[^.]+$/, '').replace(/封面|
   const keep = new Set(active.flatMap(r => [r.image,...(r.pages || [])]).map(p => path.resolve('dist',p)));
   for (const name of ['tea-pattern-marquee.png','cotton-scene-marquee.png']) keep.add(path.resolve('dist/assets/archive',name));
   for (const f of walk('dist/assets/archive')) if (!keep.has(path.resolve(f))) fs.unlinkSync(f);
-  for (const r of active) {
-    if (!r.pages?.length) continue;
-    const first = path.join('dist',r.pages[0]);
-    const cover = path.join('dist',r.image);
-    if (cover !== first && fs.existsSync(first) && !r.pages.includes(r.image)) {
-        for (const file of walk('dist/assets').filter(f => f.endsWith('.js'))) {
-          fs.writeFileSync(file,fs.readFileSync(file,'utf8').split(r.image).join(r.pages[0]));
-        }
-        continue;
-    }
-  }
   let count = 0;
   for (const f of walk('dist').filter(f => /\.(png|jpe?g)$/i.test(f))) {
     const meta = await sharp(f).metadata();

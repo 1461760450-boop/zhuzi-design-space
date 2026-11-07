@@ -4,7 +4,7 @@
     "title": "3c包装3",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-001.png",
+    "image": "assets/archive/named-cover-001.png",
     "group": "",
     "document": "assets/archive/packaging-001.pdf",
     "pages": [
@@ -16,7 +16,7 @@
     "title": "1湿纸巾包装1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-002.png",
+    "image": "assets/archive/named-cover-002.png",
     "group": "",
     "document": "assets/archive/packaging-002.pdf",
     "pages": [
@@ -28,7 +28,7 @@
     "title": "2湿纸巾包装2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-003.png",
+    "image": "assets/archive/named-cover-003.png",
     "group": "",
     "document": "assets/archive/packaging-003.pdf",
     "pages": [
@@ -40,7 +40,7 @@
     "title": "3c包装",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-004.png",
+    "image": "assets/archive/named-cover-004.png",
     "group": "",
     "document": "assets/archive/packaging-004.pdf",
     "pages": [
@@ -52,7 +52,7 @@
     "title": "3c包装2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-005.png",
+    "image": "assets/archive/named-cover-005.png",
     "group": "",
     "document": "assets/archive/packaging-005.pdf",
     "pages": [
@@ -64,7 +64,7 @@
     "title": "TEASINO奶茶",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-006.png",
+    "image": "assets/archive/named-cover-006.png",
     "group": "",
     "document": "assets/archive/packaging-006.pdf",
     "pages": [
@@ -76,7 +76,7 @@
     "title": "TEASINO奶茶2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-007.png",
+    "image": "assets/archive/named-cover-007.png",
     "group": "",
     "document": "assets/archive/packaging-007.pdf",
     "pages": [
@@ -88,7 +88,7 @@
     "title": "乐叔的茶方案1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-008.png",
+    "image": "assets/archive/named-cover-008.png",
     "group": "",
     "document": "assets/archive/packaging-008.pdf",
     "pages": [
@@ -100,7 +100,7 @@
     "title": "乐叔的茶方案2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-009.png",
+    "image": "assets/archive/named-cover-009.png",
     "group": "",
     "document": "assets/archive/packaging-009.pdf",
     "pages": [
@@ -112,7 +112,7 @@
     "title": "偻里奶茶杯1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-010.png",
+    "image": "assets/archive/named-cover-010.png",
     "group": "",
     "document": "assets/archive/packaging-010.pdf",
     "pages": [
@@ -181,7 +181,7 @@
     "title": "焦枣白茶杯方案1",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-015.png",
+    "image": "assets/archive/named-cover-015.png",
     "group": "",
     "document": "assets/archive/packaging-015.pdf",
     "pages": [
@@ -193,7 +193,7 @@
     "title": "焦枣白茶杯方案2",
     "category": "包装",
     "type": "PDF",
-    "image": "assets/archive/packaging-016.png",
+    "image": "assets/archive/named-cover-016.png",
     "group": "",
     "document": "assets/archive/packaging-016.pdf",
     "pages": [
@@ -246,7 +246,7 @@
     "title": "偻里奶茶杯2",
     "category": "包装",
     "type": "IMAGE",
-    "image": "assets/archive/packaging-020.png",
+    "image": "assets/archive/named-cover-020.png",
     "group": "",
     "pages": [
       "assets/archive/content-020.jpg"
@@ -378,7 +378,7 @@
     "title": "企业画册1",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/025.webp",
+    "image": "assets/archive/named-cover-025.jpg",
     "group": "",
     "pages": [
       "assets/archive/scaled-content-025-01.jpg",
@@ -398,7 +398,7 @@
     "title": "海外画册2",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/cover-026.png",
+    "image": "assets/archive/named-cover-026.png",
     "group": "",
     "pages": [
       "assets/archive/hd-content-026-1.jpg",
@@ -414,7 +414,7 @@
     "title": "海鲜画册",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/cover-027.jpg",
+    "image": "assets/archive/named-cover-027.jpg",
     "group": "",
     "pages": [
       "assets/archive/hd-content-027-1.jpg",
@@ -432,7 +432,7 @@
     "title": "留学画册",
     "category": "画册",
     "type": "PDF",
-    "image": "assets/archive/cover-028.jpg",
+    "image": "assets/archive/named-cover-028.jpg",
     "group": "",
     "pages": [
       "assets/archive/hd-content-028-01.jpg",
@@ -506,7 +506,7 @@
     "title": "1.球类详情",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-031.png",
+    "image": "assets/archive/named-cover-031.png",
     "group": "",
     "pages": [
       "assets/archive/original-031.png"
@@ -517,7 +517,7 @@
     "title": "天猫首页",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-033.png",
+    "image": "assets/archive/named-cover-033.png",
     "group": "",
     "pages": [
       "assets/archive/original-033.jpg"
@@ -539,7 +539,7 @@
     "title": "美妆2",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-036.png",
+    "image": "assets/archive/named-cover-036.png",
     "group": "",
     "pages": [
       "assets/archive/original-036.jpg"
@@ -550,7 +550,7 @@
     "title": "美妆4",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-038.png",
+    "image": "assets/archive/named-cover-038.png",
     "group": "",
     "pages": [
       "assets/archive/original-038.jpg"
@@ -572,7 +572,7 @@
     "title": "鞋垫1",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-041.png",
+    "image": "assets/archive/named-cover-041.png",
     "group": "",
     "pages": [
       "assets/archive/original-041.png"
@@ -583,7 +583,7 @@
     "title": "鞋垫2",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-043.png",
+    "image": "assets/archive/named-cover-043.png",
     "group": "",
     "pages": [
       "assets/archive/original-043.png"
@@ -594,7 +594,7 @@
     "title": "鞋垫3",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-045.png",
+    "image": "assets/archive/named-cover-045.png",
     "group": "",
     "pages": [
       "assets/archive/original-045.png"
@@ -605,7 +605,7 @@
     "title": "鞋垫4",
     "category": "详情页",
     "type": "IMAGE",
-    "image": "assets/archive/cover-047.png",
+    "image": "assets/archive/named-cover-047.png",
     "group": "",
     "pages": [
       "assets/archive/original-047.jpg"
